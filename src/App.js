@@ -2,68 +2,67 @@ import React, { useState } from 'react';
 import Home from './pages/Home';
 import AuthModal from './components/AuthModal';
 
-// ===== ВАШЕ ДОПОЛНИТЕЛЬНОЕ (ИЛИ СТАРОЕ) ИМПОРТЫ, ЕСЛИ НУЖНО =====
-// import SomethingElse from './components/SomethingElse'; // пример
-
 function App() {
-  // СТАРАЯ ЛОГИКА (если у вас была) - сохраните, например, стейты, эффекты
-  // ...
-
-  // НОВАЯ ЛОГИКА ДЛЯ АВТОРИЗАЦИИ
+  // Состояние для модального окна
   const [showAuthModal, setShowAuthModal] = useState(false);
+  // Состояние для залогиненного пользователя
   const [user, setUser] = useState(null);
 
-  // Открываем модальное окно
   const openModal = () => {
     setShowAuthModal(true);
   };
 
-  // Закрываем модальное окно
   const closeModal = () => {
     setShowAuthModal(false);
   };
 
-  // При регистрации (mock, без сервера)
+  // Функция регистрации
   const handleRegister = (registerData) => {
-    // registerData: { fullName, email, password, ... }
-    // Здесь вы могли бы сделать запрос к серверу,
-    // но пока просто имитируем успех
-    setUser({ nickname: registerData.fullName || 'User' });
+    // registerData = { nickname, email, password, confirmPassword }
+    // Получаем текущие аккаунты из localStorage (если их нет, пустой массив)
+    const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+    // Если аккаунт с такой почтой уже существует — уведомляем пользователя
+    if (accounts.find(acc => acc.email === registerData.email)) {
+      alert("Аккаунт с такой почтой уже существует!");
+      return;
+    }
+    // Добавляем новый аккаунт
+    accounts.push({
+      email: registerData.email,
+      password: registerData.password,
+      nickname: registerData.nickname,
+    });
+    localStorage.setItem("accounts", JSON.stringify(accounts));
+    // Логиним пользователя (устанавливаем его ник)
+    setUser({ nickname: registerData.nickname });
     setShowAuthModal(false);
   };
 
-  // При входе (mock, без сервера)
+  // Функция входа
   const handleLogin = (loginData) => {
-    // loginData: { email, password }
-    // Имитируем успешный логин, берем nickname из "БД"
-    setUser({ nickname: 'ИмяИзБД' });
-    setShowAuthModal(false);
+    // loginData = { email, password }
+    const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+    const found = accounts.find(
+      acc => acc.email === loginData.email && acc.password === loginData.password
+    );
+    if (found) {
+      setUser({ nickname: found.nickname });
+      setShowAuthModal(false);
+    } else {
+      alert("Неверная почта или пароль");
+    }
   };
 
-  // Выход из аккаунта
+  // Функция выхода
   const handleLogout = () => {
     setUser(null);
   };
 
   return (
     <>
-      {/* 
-        Если у вас была другая логика App.js, оставьте её.
-        Мы просто рендерим Home, передавая нужные пропсы.
-      */}
-      <Home
-        onOpenAuthModal={openModal}
-        user={user}
-        onLogout={handleLogout}
-      />
-
-      {/* Модальное окно входа/регистрации */}
+      <Home onOpenAuthModal={openModal} user={user} onLogout={handleLogout} />
       {showAuthModal && (
-        <AuthModal
-          onClose={closeModal}
-          onRegister={handleRegister}
-          onLogin={handleLogin}
-        />
+        <AuthModal onClose={closeModal} onRegister={handleRegister} onLogin={handleLogin} />
       )}
     </>
   );

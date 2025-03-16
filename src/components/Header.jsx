@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import logo from '../assets/images/logo.svg'; // Логотип (портфель внутри)
+import logo from '../assets/images/logo.svg';
 
 function Header({ onOpenAuthModal, user, onLogout }) {
-  // локальный стейт, чтобы показать/скрыть кнопку «Выйти»
   const [showLogout, setShowLogout] = useState(false);
 
   const handleNicknameClick = () => {
-    // переключаем отображение кнопки «Выйти»
     setShowLogout((prev) => !prev);
   };
 
   return (
     <header className="header">
-      {/* Верхняя навигационная панель */}
       <div className="header-top">
         <nav className="navbar">
           <ul>
@@ -26,14 +23,8 @@ function Header({ onOpenAuthModal, user, onLogout }) {
         </nav>
       </div>
 
-      {/* Нижняя часть: центрируем заголовок и строку поиска */}
       <div className="header-bottom">
-        {/* Логотип */}
-        <img
-          src={logo}
-          alt="JobPilot Logo"
-          className="header-logo"
-        />
+        <img src={logo} alt="JobPilot Logo" className="header-logo" />
 
         <div className="header-search-wrapper">
           <span className="my-job">Моя работа</span>
@@ -46,7 +37,6 @@ function Header({ onOpenAuthModal, user, onLogout }) {
 
         <div className="header-buttons">
           {user ? (
-            // если залогинен, показываем ник
             <div className="user-logged-in">
               <span className="user-nickname" onClick={handleNicknameClick}>
                 {user.nickname}
@@ -58,15 +48,11 @@ function Header({ onOpenAuthModal, user, onLogout }) {
               )}
             </div>
           ) : (
-            // если не залогинен, кнопка "Войти"
             <button className="login-btn" onClick={onOpenAuthModal}>
               Войти
             </button>
           )}
-
-          <button className="publish-btn">
-            Опубликовать вакансию
-          </button>
+          <button className="publish-btn">Опубликовать вакансию</button>
         </div>
       </div>
     </header>

@@ -1,34 +1,34 @@
 import React, { useState } from 'react';
-import './AuthModal.scss';
+import './AuthModal.scss'; // Предполагается, что файл стилей лежит рядом
 
 function AuthModal({ onClose, onRegister, onLogin }) {
   const [activeTab, setActiveTab] = useState('login');
 
-  // стейт для регистрации
+  // Стейт для регистрации
   const [registerData, setRegisterData] = useState({
-    fullName: '',
+    nickname: '',
     email: '',
     password: '',
     confirmPassword: '',
   });
 
-  // стейт для логина
+  // Стейт для логина
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
   });
 
-  // отправка формы регистрации
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
-    // вызываем onRegister, передаём registerData
+    if (registerData.password !== registerData.confirmPassword) {
+      alert("Пароли не совпадают!");
+      return;
+    }
     onRegister(registerData);
   };
 
-  // отправка формы логина
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    // вызываем onLogin, передаём loginData
     onLogin(loginData);
   };
 
@@ -50,7 +50,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
             Создать аккаунт
           </button>
         </div>
-
         <div className="auth-modal-content">
           {activeTab === 'login' && (
             <form className="auth-form login-form" onSubmit={handleLoginSubmit}>
@@ -78,16 +77,15 @@ function AuthModal({ onClose, onRegister, onLogin }) {
               <button type="submit">Войти</button>
             </form>
           )}
-
           {activeTab === 'register' && (
             <form className="auth-form register-form" onSubmit={handleRegisterSubmit}>
               <h3>Создать аккаунт</h3>
               <input
                 type="text"
-                placeholder="Полное имя"
+                placeholder="Логин"
                 required
-                value={registerData.fullName}
-                onChange={(e) => setRegisterData({ ...registerData, fullName: e.target.value })}
+                value={registerData.nickname}
+                onChange={(e) => setRegisterData({ ...registerData, nickname: e.target.value })}
               />
               <input
                 type="email"

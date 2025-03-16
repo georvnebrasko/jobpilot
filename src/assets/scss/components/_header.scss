@@ -1,10 +1,9 @@
-/* _header.scss */
 .header {
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 10px 0;
   
-    /* Верхняя навигация */
+    /* Верхняя панель (навигация) */
     &-top {
       padding: 10px 20px;
   
@@ -12,7 +11,7 @@
         ul {
           list-style: none;
           display: flex;
-          justify-content: center;
+          justify-content: center; /* центрируем ссылки */
           gap: 20px;
   
           li {
@@ -31,57 +30,79 @@
       }
     }
   
-    /* Нижняя часть */
+    /* Нижняя часть: логотип, поиск, кнопки */
     &-bottom {
       display: flex;
       align-items: center;
-      justify-content: center; /* Центрируем */
+      justify-content: center; /* всё по центру */
       padding: 15px 20px;
       gap: 30px;
   
-      /* Уменьшаем логотип */
+      /* Логотип */
       .header-logo {
-        width: 50px;
+        width: 70px;
         height: auto;
       }
   
-      /* ОБЕРТКА ДЛЯ ПОИСКА (ЦЕНТРИРУЕМ) */
+      /* Блок для «Моя работа» и поиска */
       .header-search-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 15px;
         flex-grow: 1;
-        max-width: 1200px; /* Чтоб не расползался */
+        max-width: 1900px; /* Чтобы не растягивалось слишком */
       }
   
-      /* "Моя работа" */
       .my-job {
         font-weight: bold;
         font-size: 1.3rem;
       }
   
-      /* ПОИСКОВАЯ СТРОКА (увеличена) */
       .header-search {
         flex-grow: 1;
         width: 100%;
-        max-width: 900px; /* Регулируем ширину */
+        max-width: 900px; /* Длина поисковой строки */
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 6px;
         font-size: 14px;
       }
   
-      /* Кнопки */
+      /* Правый блок с кнопками */
       .header-buttons {
         display: flex;
-        gap: 10px;
+        align-items: center;
+        gap: 15px;
   
+        /* Когда пользователь залогинен */
+        .user-logged-in {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+  
+          .user-nickname {
+            font-weight: bold;
+            cursor: pointer; /* Чтобы было понятно, что можно кликнуть */
+          }
+  
+          .logout-btn {
+            background-color: transparent;
+            border: 1px solid #2979ff;
+            color: #2979ff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+          }
+        }
+  
+        /* Когда пользователь не залогинен */
         .login-btn {
           background-color: transparent;
           border: 1px solid #2979ff;
           color: #2979ff;
-          padding: 10px 16px;
+          padding: 8px 16px;
           border-radius: 4px;
           cursor: pointer;
           font-size: 14px;
@@ -91,7 +112,7 @@
           background-color: #2979ff;
           color: #fff;
           border: none;
-          padding: 10px 16px;
+          padding: 8px 16px;
           border-radius: 4px;
           cursor: pointer;
           font-size: 14px;
