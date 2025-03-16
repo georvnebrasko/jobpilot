@@ -1,10 +1,9 @@
 import React from 'react';
-import logo from '../assets/images/logo.svg'; // Логотип (портфель внутри)
+import logo from '../assets/images/logo.svg';
 
-function Header() {
+function Header({ onOpenAuthModal }) {
   return (
     <header className="header">
-      {/* Верхняя навигационная панель */}
       <div className="header-top">
         <nav className="navbar">
           <ul>
@@ -17,17 +16,9 @@ function Header() {
           </ul>
         </nav>
       </div>
-
-      {/* Нижняя часть: центрируем заголовок и строку поиска */}
       <div className="header-bottom">
-        {/* Логотип */}
-        <img
-          src={logo}
-          alt="JobPilot Logo"
-          className="header-logo"
-        />
-
-        <div className="header-search-wrapper">
+        <img src={logo} alt="JobPilot Logo" className="header-logo" />
+        <div className="header-bottom-left">
           <span className="my-job">Моя работа</span>
           <input
             type="text"
@@ -35,9 +26,8 @@ function Header() {
             className="header-search"
           />
         </div>
-
-        <div className="header-buttons">
-          <button className="login-btn">Войти</button>
+        <div className="header-bottom-right">
+          <button className="login-btn" onClick={onOpenAuthModal}>Войти</button>
           <button className="publish-btn">Опубликовать вакансию</button>
         </div>
       </div>
