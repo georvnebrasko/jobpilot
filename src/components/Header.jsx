@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/images/logo.svg'; // Логотип (портфель внутри)
 
-function Header({ onOpenAuthModal, user }) {
+function Header({ onOpenAuthModal, user, onLogout }) {
+  // локальный стейт, чтобы показать/скрыть кнопку «Выйти»
+  const [showLogout, setShowLogout] = useState(false);
+
+  const handleNicknameClick = () => {
+    // переключаем отображение кнопки «Выйти»
+    setShowLogout((prev) => !prev);
+  };
+
   return (
     <header className="header">
       {/* Верхняя навигационная панель */}
@@ -37,12 +45,28 @@ function Header({ onOpenAuthModal, user }) {
         </div>
 
         <div className="header-buttons">
-          { user ? (
-            <span className="user-nickname">{user.nickname}</span>
+          {user ? (
+            // если залогинен, показываем ник
+            <div className="user-logged-in">
+              <span className="user-nickname" onClick={handleNicknameClick}>
+                {user.nickname}
+              </span>
+              {showLogout && (
+                <button className="logout-btn" onClick={onLogout}>
+                  Выйти
+                </button>
+              )}
+            </div>
           ) : (
-            <button className="login-btn" onClick={onOpenAuthModal}>Войти</button>
+            // если не залогинен, кнопка "Войти"
+            <button className="login-btn" onClick={onOpenAuthModal}>
+              Войти
+            </button>
           )}
-          <button className="publish-btn">Опубликовать вакансию</button>
+
+          <button className="publish-btn">
+            Опубликовать вакансию
+          </button>
         </div>
       </div>
     </header>

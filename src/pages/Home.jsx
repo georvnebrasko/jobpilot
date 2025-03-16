@@ -11,10 +11,15 @@ import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 
-function Home({ onOpenAuthModal }) {
+function Home({ onOpenAuthModal, user, onLogout }) {
   return (
     <div className="home-page">
-      <Header onOpenAuthModal={onOpenAuthModal} />
+      {/* Передаём user и onLogout в Header */}
+      <Header
+        onOpenAuthModal={onOpenAuthModal}
+        user={user}
+        onLogout={onLogout}
+      />
       <HeroSection />
       <Stats />
       <PopularJobs />
