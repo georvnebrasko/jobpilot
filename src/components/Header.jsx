@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../assets/images/logo.svg'; // Логотип (портфель внутри)
 
-function Header({ onOpenAuthModal }) {
+function Header({ onOpenAuthModal, user }) {
   return (
     <header className="header">
       {/* Верхняя навигационная панель */}
@@ -37,13 +37,12 @@ function Header({ onOpenAuthModal }) {
         </div>
 
         <div className="header-buttons">
-          {/* При нажатии вызываем функцию открытия модального окна регистрации */}
-          <button className="login-btn" onClick={onOpenAuthModal}>
-            Войти
-          </button>
-          <button className="publish-btn">
-            Опубликовать вакансию
-          </button>
+          { user ? (
+            <span className="user-nickname">{user.nickname}</span>
+          ) : (
+            <button className="login-btn" onClick={onOpenAuthModal}>Войти</button>
+          )}
+          <button className="publish-btn">Опубликовать вакансию</button>
         </div>
       </div>
     </header>
