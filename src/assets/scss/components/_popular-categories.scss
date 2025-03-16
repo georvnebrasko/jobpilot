@@ -1,0 +1,49 @@
+/* _popular-categories.scss */
+.popular-categories {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: center; /* Центрируем заголовок */
+  
+    h2 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  
+    /* Центрируем весь список */
+    .categories-list {
+      display: flex;
+      justify-content: center; /* Центрируем элементы */
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  
+    /* Стили для карточек */
+    .category-card {
+      background-color: #f9f9f9;
+      border-radius: 6px;
+      padding: 20px;
+      text-align: center;
+      width: 180px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    /* Размер иконок */
+    .category-icon {
+      width: 50px;
+      margin-bottom: 8px;
+    }
+  
+    /* Заголовки категорий */
+    .category-card h4 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  
+    /* Количество позиций */
+    .category-card p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+  }

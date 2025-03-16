@@ -1,0 +1,33 @@
+/* _how-it-works.scss */
+.how-it-works {
+    background-color: #fafafa;
+    padding: 40px 20px;
+    text-align: center;
+  
+    h2 {
+      margin-bottom: 30px;
+      font-size: 1.6rem;
+    }
+  
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap; /* чтобы переносилось на мобилке */
+  
+      .step {
+        background-color: #fff;
+        border-radius: 6px;
+        padding: 20px;
+        width: 180px;
+        box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        text-align: center;
+  
+        h3 {
+          font-size: 1rem;
+          color: #333;
+          margin: 0;
+        }
+      }
+    }
+  }
