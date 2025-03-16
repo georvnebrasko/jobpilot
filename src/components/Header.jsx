@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from '../assets/images/logo.svg';
+import logo from '../assets/images/logo.svg'; // Логотип (портфель внутри)
 
 function Header({ onOpenAuthModal }) {
   return (
     <header className="header">
+      {/* Верхняя навигационная панель */}
       <div className="header-top">
         <nav className="navbar">
           <ul>
@@ -16,9 +17,17 @@ function Header({ onOpenAuthModal }) {
           </ul>
         </nav>
       </div>
+
+      {/* Нижняя часть: центрируем заголовок и строку поиска */}
       <div className="header-bottom">
-        <img src={logo} alt="JobPilot Logo" className="header-logo" />
-        <div className="header-bottom-left">
+        {/* Логотип */}
+        <img
+          src={logo}
+          alt="JobPilot Logo"
+          className="header-logo"
+        />
+
+        <div className="header-search-wrapper">
           <span className="my-job">Моя работа</span>
           <input
             type="text"
@@ -26,9 +35,15 @@ function Header({ onOpenAuthModal }) {
             className="header-search"
           />
         </div>
-        <div className="header-bottom-right">
-          <button className="login-btn" onClick={onOpenAuthModal}>Войти</button>
-          <button className="publish-btn">Опубликовать вакансию</button>
+
+        <div className="header-buttons">
+          {/* При нажатии вызываем функцию открытия модального окна регистрации */}
+          <button className="login-btn" onClick={onOpenAuthModal}>
+            Войти
+          </button>
+          <button className="publish-btn">
+            Опубликовать вакансию
+          </button>
         </div>
       </div>
     </header>
