@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/jobpilot/static/css/main.b4df4c78.css",
+    "main.js": "/jobpilot/static/js/main.4c985e31.js",
+    "static/media/Illustration.svg": "/jobpilot/static/media/Illustration.8495ba62d829807238187ca0afe41dd3.svg",
+    "static/media/aeroflot.svg": "/jobpilot/static/media/aeroflot.f0a08f4d0f165a92e1fdee4ae307e6f4.svg",
+    "static/media/gazprom.svg": "/jobpilot/static/media/gazprom.e793c9d6e4fba26728bf1d6f823044cb.svg",
+    "static/media/company.svg": "/jobpilot/static/media/company.e7ff372b67ed5ebe990168778e634856.svg",
+    "static/media/job.svg": "/jobpilot/static/media/job.eb4e3c0b2ca70d0725c99564063c8f93.svg",
+    "static/media/candidates.svg": "/jobpilot/static/media/candidates.daa531f95ae4914e40205d838ad2e6d2.svg",
+    "static/media/marceting.svg": "/jobpilot/static/media/marceting.23c46e1cb15cb5a93e9def278edefc6e.svg",
+    "static/media/google.svg": "/jobpilot/static/media/google.9437dfe1198295a054609e8a76f48df0.svg",
+    "static/media/music.svg": "/jobpilot/static/media/music.214cd0895fc99a7762850dd5d3fcd9a8.svg",
+    "static/media/health.svg": "/jobpilot/static/media/health.8d52b1cb002706845e434204abdae007.svg",
+    "static/media/logo.svg": "/jobpilot/static/media/logo.531605ddf697b13d1078939a056c9dac.svg",
+    "static/media/figma.svg": "/jobpilot/static/media/figma.8b9df84436a56d15909f3302fe621141.svg",
+    "static/media/nayka.svg": "/jobpilot/static/media/nayka.a61e7eadf2226f4f1426b072622f9b3c.svg",
+    "static/media/up.svg": "/jobpilot/static/media/up.aa3e22f68918e1390bf32fad9775056d.svg",
+    "static/media/apple.svg": "/jobpilot/static/media/apple.7ba893517cff25eb18a3bd03c0eff6c8.svg",
+    "index.html": "/jobpilot/index.html",
+    "static/media/kod.svg": "/jobpilot/static/media/kod.70b0a6594c7940c548698e996f37746c.svg",
+    "static/media/facebook.svg": "/jobpilot/static/media/facebook.22b93bc5bdf46d8dff7ff0f3e9679694.svg",
+    "static/media/arrow.svg": "/jobpilot/static/media/arrow.3d4c4bab0b5fdee329ce7caaa36c994d.svg",
+    "main.b4df4c78.css.map": "/jobpilot/static/css/main.b4df4c78.css.map",
+    "main.4c985e31.js.map": "/jobpilot/static/js/main.4c985e31.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b4df4c78.css",
+    "static/js/main.4c985e31.js"
+  ]
+}
