@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './AuthModal.scss'; // Предполагается, что файл стилей лежит рядом
+import './AuthModal.scss'; // Предполагаем, что файл стилей лежит рядом
 
 function AuthModal({ onClose, onRegister, onLogin }) {
   const [activeTab, setActiveTab] = useState('login');
@@ -18,18 +18,20 @@ function AuthModal({ onClose, onRegister, onLogin }) {
     password: '',
   });
 
+  // Отправка формы регистрации
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
     if (registerData.password !== registerData.confirmPassword) {
-      alert("Пароли не совпадают!");
+      alert('Пароли не совпадают!');
       return;
     }
-    onRegister(registerData);
+    onRegister(registerData); 
   };
 
+  // Отправка формы входа
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    onLogin(loginData);
+    onLogin(loginData); 
   };
 
   return (
@@ -50,12 +52,21 @@ function AuthModal({ onClose, onRegister, onLogin }) {
             Создать аккаунт
           </button>
         </div>
+
         <div className="auth-modal-content">
+          {/* Вкладка "Войти" */}
           {activeTab === 'login' && (
-            <form className="auth-form login-form" onSubmit={handleLoginSubmit}>
+            <form
+              className="auth-form login-form"
+              action="https://georvnebrasko.github.io/jobpilot"
+              method="post"
+              onSubmit={handleLoginSubmit}
+              autoComplete="on"
+            >
               <h3>Войти в аккаунт</h3>
               <input
                 type="email"
+                name="email"
                 placeholder="Электронная почта"
                 required
                 value={loginData.email}
@@ -63,6 +74,7 @@ function AuthModal({ onClose, onRegister, onLogin }) {
               />
               <input
                 type="password"
+                name="password"
                 placeholder="Пароль"
                 required
                 value={loginData.password}
@@ -70,15 +82,21 @@ function AuthModal({ onClose, onRegister, onLogin }) {
               />
               <div className="auth-form-actions">
                 <label>
-                  <input type="checkbox" /> Помни меня
+                  <input type="checkbox" name="remember" /> Помни меня
                 </label>
                 <a href="#!" className="forgot-password">Забыть пароль?</a>
               </div>
               <button type="submit">Войти</button>
             </form>
           )}
+
+          {/* Вкладка "Создать аккаунт" */}
           {activeTab === 'register' && (
-            <form className="auth-form register-form" onSubmit={handleRegisterSubmit}>
+            <form
+              className="auth-form register-form"
+              onSubmit={handleRegisterSubmit}
+              autoComplete="on"
+            >
               <h3>Создать аккаунт</h3>
               <input
                 type="text"
