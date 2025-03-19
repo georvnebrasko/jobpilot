@@ -86,16 +86,18 @@ const pageOrders = [
 ];
 
 function FindJobs() {
-  // Поля поиска
+  // Верхнее поле (рядом с логотипом) для поиска ТОЛЬКО по компании
   const [companySearch, setCompanySearch] = useState('');
+
+  // Поля нижней панели: keyword (название вакансии), location (город), category
   const [keyword, setKeyword] = useState('');
   const [location, setLocation] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
 
-  // Пагинация
+  // Пагинация: 3 страницы
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Фильтр (ваш старый код)
+  // Фильтрация
   const filteredJobs = initialJobs.filter((job) => {
     const matchesCompany = job.company.toLowerCase().includes(companySearch.toLowerCase());
     const matchesTitle = job.title.toLowerCase().includes(keyword.toLowerCase());
@@ -110,7 +112,7 @@ function FindJobs() {
     .map(i => filteredJobs[i])
     .filter(job => job !== undefined);
 
-  // Функции пагинации
+  // Функции переключения страниц
   const goToPage = (pageNum) => {
     if (pageNum >= 1 && pageNum <= 3) {
       setCurrentPage(pageNum);
@@ -129,7 +131,7 @@ function FindJobs() {
 
   return (
     <div className="find-jobs-page">
-      {/* Навигационная панель (вернули) */}
+      {/* Навигационная панель */}
       <div className="find-jobs-nav">
         <ul>
           <li><Link to="/">Главная</Link></li>
