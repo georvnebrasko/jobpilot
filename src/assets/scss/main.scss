@@ -16,3 +16,7 @@
 @import 'components/footer';
 
 @import 'pages/home';
+
+.home-page {
+    padding-top: 160px; // Отступ равен высоте Header
+  }

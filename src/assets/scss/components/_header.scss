@@ -1,104 +1,97 @@
 .header {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 10px 0;
-  
-    /* Верхняя панель (навигация) */
-    &-top {
-      padding: 10px 20px;
-  
-      .navbar {
-        ul {
-          list-style: none;
-          display: flex;
-          justify-content: center; /* центрируем ссылки */
-          gap: 20px;
-  
-          li {
-            a {
-              color: #333;
-              text-decoration: none;
-              font-size: 14px;
-              transition: color 0.2s;
-  
-              &:hover {
-                color: #2979ff;
-              }
+  /* Вместо fixed используем sticky */
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 10px 0;
+
+  /* Верхняя панель (навигация) */
+  &-top {
+    padding: 10px 20px;
+
+    .navbar {
+      ul {
+        list-style: none;
+        display: flex;
+        justify-content: center; /* центрируем ссылки */
+        gap: 20px;
+
+        li {
+          a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+
+            &:hover {
+              color: #2979ff;
             }
           }
         }
       }
     }
-  
-    /* Нижняя часть: логотип, поиск, кнопки */
-    &-bottom {
+  }
+
+  /* Нижняя часть: логотип, поиск, кнопки */
+  &-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* всё по центру */
+    padding: 15px 20px;
+    gap: 30px;
+
+    /* Логотип */
+    .header-logo {
+      width: 70px;
+      height: auto;
+    }
+
+    /* Блок для «Моя работа» и поиска */
+    .header-search-wrapper {
       display: flex;
       align-items: center;
-      justify-content: center; /* всё по центру */
-      padding: 15px 20px;
-      gap: 30px;
-  
-      /* Логотип */
-      .header-logo {
-        width: 70px;
-        height: auto;
-      }
-  
-      /* Блок для «Моя работа» и поиска */
-      .header-search-wrapper {
+      justify-content: center;
+      gap: 15px;
+      flex-grow: 1;
+      max-width: 1900px; /* Чтобы не растягивалось слишком */
+    }
+
+    .my-job {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .header-search {
+      flex-grow: 1;
+      width: 100%;
+      max-width: 900px; /* Длина поисковой строки */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    /* Правый блок с кнопками */
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      /* Когда пользователь залогинен */
+      .user-logged-in {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 15px;
-        flex-grow: 1;
-        max-width: 1900px; /* Чтобы не растягивалось слишком */
-      }
-  
-      .my-job {
-        font-weight: bold;
-        font-size: 1.3rem;
-      }
-  
-      .header-search {
-        flex-grow: 1;
-        width: 100%;
-        max-width: 900px; /* Длина поисковой строки */
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 14px;
-      }
-  
-      /* Правый блок с кнопками */
-      .header-buttons {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-  
-        /* Когда пользователь залогинен */
-        .user-logged-in {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-  
-          .user-nickname {
-            font-weight: bold;
-            cursor: pointer; /* Чтобы было понятно, что можно кликнуть */
-          }
-  
-          .logout-btn {
-            background-color: transparent;
-            border: 1px solid #2979ff;
-            color: #2979ff;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-          }
+        gap: 10px;
+
+        .user-nickname {
+          font-weight: bold;
+          cursor: pointer; /* Чтобы было понятно, что можно кликнуть */
         }
-  
-        /* Когда пользователь не залогинен */
-        .login-btn {
+
+        .logout-btn {
           background-color: transparent;
           border: 1px solid #2979ff;
           color: #2979ff;
@@ -107,16 +100,28 @@
           cursor: pointer;
           font-size: 14px;
         }
-  
-        .publish-btn {
-          background-color: #2979ff;
-          color: #fff;
-          border: none;
-          padding: 8px 16px;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 14px;
-        }
+      }
+
+      /* Когда пользователь не залогинен */
+      .login-btn {
+        background-color: transparent;
+        border: 1px solid #2979ff;
+        color: #2979ff;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .publish-btn {
+        background-color: #2979ff;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
       }
     }
   }
+}

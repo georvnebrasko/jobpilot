@@ -11,7 +11,16 @@ function Header({ onOpenAuthModal, user, onLogout }) {
   };
 
   return (
-    <header className="header">
+    <header
+      className="header"
+      style={{
+        position: 'fixed',  // <-- Делаем "прилипание" к верху
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: 999,        // <-- Чтобы перекрывать другие элементы
+      }}
+    >
       <div className="header-top">
         <nav className="navbar">
           <ul>

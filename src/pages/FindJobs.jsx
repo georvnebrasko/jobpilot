@@ -1,6 +1,6 @@
 // src/pages/FindJobs.jsx
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import './FindJobs.scss';
 import logo from '../assets/images/logo.svg';
 
@@ -18,7 +18,7 @@ const initialJobs = [
     salary: '30 000 - 35 000',
     category: 'design',
     company: 'Apple',
-    companyIcon: appleImg
+    companyIcon: appleImg,
   },
   {
     title: 'Младший графический дизайнер',
@@ -26,7 +26,7 @@ const initialJobs = [
     salary: '50 000 - 70 000',
     category: 'design',
     company: 'Apple',
-    companyIcon: appleImg
+    companyIcon: appleImg,
   },
   {
     title: 'Визуальный дизайнер',
@@ -34,7 +34,7 @@ const initialJobs = [
     salary: '20 000 - 25 000',
     category: 'design',
     company: 'Google',
-    companyIcon: googleImg
+    companyIcon: googleImg,
   },
   {
     title: 'Инженер-программист',
@@ -42,7 +42,7 @@ const initialJobs = [
     salary: '15 000 - 20 000',
     category: 'it',
     company: 'Google',
-    companyIcon: googleImg
+    companyIcon: googleImg,
   },
   {
     title: 'Фронтенд-разработчик',
@@ -50,7 +50,7 @@ const initialJobs = [
     salary: '50 000 - 60 000',
     category: 'it',
     company: 'Facebook',
-    companyIcon: facebookImg
+    companyIcon: facebookImg,
   },
   {
     title: 'Бэкенд-разработчик',
@@ -58,7 +58,7 @@ const initialJobs = [
     salary: '35 000 - 40 000',
     category: 'it',
     company: 'Facebook',
-    companyIcon: facebookImg
+    companyIcon: facebookImg,
   },
   {
     title: 'Маркетолог',
@@ -66,7 +66,7 @@ const initialJobs = [
     salary: '20 000 - 25 000',
     category: 'marketing',
     company: 'Яндекс',
-    companyIcon: yandexImg
+    companyIcon: yandexImg,
   },
   {
     title: 'Таргетолог',
@@ -74,30 +74,41 @@ const initialJobs = [
     salary: '50 000 - 90 000',
     category: 'marketing',
     company: 'Яндекс',
-    companyIcon: yandexImg
-  }
+    companyIcon: yandexImg,
+  },
 ];
 
 // Три "страницы" - разный порядок индексов
 const pageOrders = [
-  [0,1,2,3,4,5,6,7],
-  [3,0,2,5,1,7,6,4],
-  [2,4,7,1,3,6,0,5]
+  [0, 1, 2, 3, 4, 5, 6, 7],
+  [3, 0, 2, 5, 1, 7, 6, 4],
+  [2, 4, 7, 1, 3, 6, 0, 5],
 ];
 
 function FindJobs() {
-  // Верхнее поле (рядом с логотипом) для поиска ТОЛЬКО по компании
-  const [companySearch, setCompanySearch] = useState('');
+  // Считываем query-параметры через useSearchParams
+  const [searchParams] = useSearchParams();
 
-  // Поля нижней панели: keyword (название вакансии), location (город), category
-  const [keyword, setKeyword] = useState('');
-  const [location, setLocation] = useState('');
+  // Берем значения 'job' и 'loc' из query (или пустую строку, если нет)
+  const initialJob = searchParams.get('job') || '';
+  const initialLoc = searchParams.get('loc') || '';
+
+  // Поля для поиска: companySearch, keyword и location
+  const [companySearch, setCompanySearch] = useState('');
+  const [keyword, setKeyword] = useState(initialJob);
+  const [location, setLocation] = useState(initialLoc);
   const [selectedCategory, setSelectedCategory] = useState('');
+
+  // Если query-параметры изменятся, обновляем поля keyword и location
+  useEffect(() => {
+    setKeyword(searchParams.get('job') || '');
+    setLocation(searchParams.get('loc') || '');
+  }, [searchParams]);
 
   // Пагинация: 3 страницы
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Фильтрация
+  // Фильтрация вакансий
   const filteredJobs = initialJobs.filter((job) => {
     const matchesCompany = job.company.toLowerCase().includes(companySearch.toLowerCase());
     const matchesTitle = job.title.toLowerCase().includes(keyword.toLowerCase());
@@ -109,10 +120,10 @@ function FindJobs() {
   // Применяем порядок текущей страницы
   const order = pageOrders[currentPage - 1];
   const finalJobs = order
-    .map(i => filteredJobs[i])
-    .filter(job => job !== undefined);
+    .map((i) => filteredJobs[i])
+    .filter((job) => job !== undefined);
 
-  // Функции переключения страниц
+  // Функции пагинации
   const goToPage = (pageNum) => {
     if (pageNum >= 1 && pageNum <= 3) {
       setCurrentPage(pageNum);
@@ -134,19 +145,33 @@ function FindJobs() {
       {/* Навигационная панель */}
       <div className="find-jobs-nav">
         <ul>
-          <li><Link to="/">Главная</Link></li>
-          <li><a href="#!">Найти работу</a></li>
-          <li><a href="#!">Работодатели</a></li>
-          <li><a href="#!">Кандидаты</a></li>
-          <li><a href="#!">Цены</a></li>
-          <li><a href="#!">Поддержка</a></li>
+          <li>
+            <Link to="/">Главная</Link>
+          </li>
+          <li>
+            <a href="#!">Найти работу</a>
+          </li>
+          <li>
+            <a href="#!">Работодатели</a>
+          </li>
+          <li>
+            <a href="#!">Кандидаты</a>
+          </li>
+          <li>
+            <a href="#!">Цены</a>
+          </li>
+          <li>
+            <a href="#!">Поддержка</a>
+          </li>
         </ul>
       </div>
 
       {/* Верхняя панель */}
       <div className="find-jobs-header">
         <img src={logo} alt="Job Logo" className="jobs-logo" />
-        <Link to="/" className="company-name">Моя работа</Link>
+        <Link to="/" className="company-name">
+          Моя работа
+        </Link>
         <div className="jobs-search-input">
           <input
             type="text"
@@ -193,7 +218,11 @@ function FindJobs() {
         {finalJobs.map((job, idx) => (
           <div className="job-card" key={idx}>
             <div className="company-info">
-              <img src={job.companyIcon} alt={job.company} className="company-icon" />
+              <img
+                src={job.companyIcon}
+                alt={job.company}
+                className="company-icon"
+              />
               <p>{job.company}</p>
             </div>
             <h4>{job.title}</h4>
