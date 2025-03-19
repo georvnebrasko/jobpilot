@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/jobpilot/static/css/main.bf88d477.css",
-    "main.js": "/jobpilot/static/js/main.dbd187b4.js",
+    "main.css": "/jobpilot/static/css/main.2b993508.css",
+    "main.js": "/jobpilot/static/js/main.d991b639.js",
     "static/media/Illustration.svg": "/jobpilot/static/media/Illustration.8495ba62d829807238187ca0afe41dd3.svg",
     "static/media/aeroflot.svg": "/jobpilot/static/media/aeroflot.f0a08f4d0f165a92e1fdee4ae307e6f4.svg",
+    "static/media/yandexicon.svg": "/jobpilot/static/media/yandexicon.162a1c011ec5a46e1176f368ae2984fd.svg",
     "static/media/gazprom.svg": "/jobpilot/static/media/gazprom.e793c9d6e4fba26728bf1d6f823044cb.svg",
     "static/media/company.svg": "/jobpilot/static/media/company.e7ff372b67ed5ebe990168778e634856.svg",
     "static/media/job.svg": "/jobpilot/static/media/job.eb4e3c0b2ca70d0725c99564063c8f93.svg",
@@ -21,11 +22,11 @@
     "static/media/kod.svg": "/jobpilot/static/media/kod.70b0a6594c7940c548698e996f37746c.svg",
     "static/media/facebook.svg": "/jobpilot/static/media/facebook.22b93bc5bdf46d8dff7ff0f3e9679694.svg",
     "static/media/arrow.svg": "/jobpilot/static/media/arrow.3d4c4bab0b5fdee329ce7caaa36c994d.svg",
-    "main.bf88d477.css.map": "/jobpilot/static/css/main.bf88d477.css.map",
-    "main.dbd187b4.js.map": "/jobpilot/static/js/main.dbd187b4.js.map"
+    "main.2b993508.css.map": "/jobpilot/static/css/main.2b993508.css.map",
+    "main.d991b639.js.map": "/jobpilot/static/js/main.d991b639.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf88d477.css",
-    "static/js/main.dbd187b4.js"
+    "static/css/main.2b993508.css",
+    "static/js/main.d991b639.js"
   ]
 }
