@@ -1,3 +1,4 @@
+// src/pages/Home.jsx
 import React from 'react';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
@@ -14,7 +15,11 @@ import Footer from '../components/Footer';
 function Home({ onOpenAuthModal, user, onLogout }) {
   return (
     <div className="home-page">
-      <Header onOpenAuthModal={onOpenAuthModal} user={user} onLogout={onLogout} />
+      <Header 
+        onOpenAuthModal={onOpenAuthModal} 
+        user={user} 
+        onLogout={onLogout} 
+      />
       <HeroSection />
       <Stats />
       <PopularJobs />

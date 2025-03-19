@@ -1,11 +1,13 @@
+// src/components/Header.jsx
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.svg';
 
 function Header({ onOpenAuthModal, user, onLogout }) {
   const [showLogout, setShowLogout] = useState(false);
 
   const handleNicknameClick = () => {
-    setShowLogout((prev) => !prev);
+    setShowLogout(prev => !prev);
   };
 
   return (
@@ -13,8 +15,8 @@ function Header({ onOpenAuthModal, user, onLogout }) {
       <div className="header-top">
         <nav className="navbar">
           <ul>
-            <li><a href="#!">Главная</a></li>
-            <li><a href="#!">Найти работу</a></li>
+            <li><Link to="/">Главная</Link></li>
+            <li><Link to="/find-jobs">Найти работу</Link></li>
             <li><a href="#!">Работодатели</a></li>
             <li><a href="#!">Кандидаты</a></li>
             <li><a href="#!">Цены</a></li>
@@ -22,10 +24,10 @@ function Header({ onOpenAuthModal, user, onLogout }) {
           </ul>
         </nav>
       </div>
-
       <div className="header-bottom">
-        <img src={logo} alt="JobPilot Logo" className="header-logo" />
-
+        <Link to="/">
+          <img src={logo} alt="JobPilot Logo" className="header-logo" />
+        </Link>
         <div className="header-search-wrapper">
           <span className="my-job">Моя работа</span>
           <input
@@ -34,7 +36,6 @@ function Header({ onOpenAuthModal, user, onLogout }) {
             className="header-search"
           />
         </div>
-
         <div className="header-buttons">
           {user ? (
             <div className="user-logged-in">
