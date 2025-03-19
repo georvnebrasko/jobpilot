@@ -79,29 +79,23 @@ const initialJobs = [
 ];
 
 // Три "страницы" - разный порядок индексов
-// Можно менять под ваши нужды
 const pageOrders = [
-  // Страница 1
-  [0,1,2,3,4,5,6,7], 
-  // Страница 2 - другой порядок
-  [3,0,2,5,1,7,6,4], 
-  // Страница 3 - ещё один порядок
+  [0,1,2,3,4,5,6,7],
+  [3,0,2,5,1,7,6,4],
   [2,4,7,1,3,6,0,5]
 ];
 
 function FindJobs() {
-  // Верхнее поле (рядом с логотипом) для поиска ТОЛЬКО по компании
+  // Поля поиска
   const [companySearch, setCompanySearch] = useState('');
-
-  // Поля нижней панели: keyword (название вакансии), location (город), category
   const [keyword, setKeyword] = useState('');
   const [location, setLocation] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
 
-  // Пагинация: 3 страницы
+  // Пагинация
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Фильтрация (как в вашем коде)
+  // Фильтр (ваш старый код)
   const filteredJobs = initialJobs.filter((job) => {
     const matchesCompany = job.company.toLowerCase().includes(companySearch.toLowerCase());
     const matchesTitle = job.title.toLowerCase().includes(keyword.toLowerCase());
@@ -110,16 +104,13 @@ function FindJobs() {
     return matchesCompany && matchesTitle && matchesLocation && matchesCategory;
   });
 
-  // Перестановка (pages) для currentPage
-  // Берём массив индексов из pageOrders[currentPage - 1],
-  // потом вытаскиваем отфильтрованные вакансии по этим индексам
+  // Применяем порядок текущей страницы
   const order = pageOrders[currentPage - 1];
-  // Чтобы не было ошибок, отфильтруем undefined, если индекс превышает кол-во filteredJobs
   const finalJobs = order
     .map(i => filteredJobs[i])
     .filter(job => job !== undefined);
 
-  // Функции переключения страниц
+  // Функции пагинации
   const goToPage = (pageNum) => {
     if (pageNum >= 1 && pageNum <= 3) {
       setCurrentPage(pageNum);
@@ -138,7 +129,19 @@ function FindJobs() {
 
   return (
     <div className="find-jobs-page">
-      {/* Верхняя панель: Логотип, "Моя работа", и поиск ТОЛЬКО по компании */}
+      {/* Навигационная панель (вернули) */}
+      <div className="find-jobs-nav">
+        <ul>
+          <li><Link to="/">Главная</Link></li>
+          <li><a href="#!">Найти работу</a></li>
+          <li><a href="#!">Работодатели</a></li>
+          <li><a href="#!">Кандидаты</a></li>
+          <li><a href="#!">Цены</a></li>
+          <li><a href="#!">Поддержка</a></li>
+        </ul>
+      </div>
+
+      {/* Верхняя панель */}
       <div className="find-jobs-header">
         <img src={logo} alt="Job Logo" className="jobs-logo" />
         <Link to="/" className="company-name">Моя работа</Link>
@@ -183,7 +186,7 @@ function FindJobs() {
         <button className="search-button">Найти работу</button>
       </div>
 
-      {/* Сетка карточек (после фильтра + порядок) */}
+      {/* Сетка карточек */}
       <div className="job-cards-grid">
         {finalJobs.map((job, idx) => (
           <div className="job-card" key={idx}>
