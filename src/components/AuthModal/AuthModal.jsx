@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './AuthModal.scss'; // Предполагаем, что файл стилей лежит рядом
+import './AuthModal.scss'; // Файл стилей с новыми названиями классов
 
 function AuthModal({ onClose, onRegister, onLogin }) {
   const [activeTab, setActiveTab] = useState('login');
@@ -35,29 +35,30 @@ function AuthModal({ onClose, onRegister, onLogin }) {
   };
 
   return (
-    <div className="auth-modal-overlay">
-      <div className="auth-modal">
-        <button className="auth-modal-close" onClick={onClose}>×</button>
-        <div className="auth-modal-tabs">
+    <div className="authModal__overlay">
+      <div className="authModal">
+        <button className="authModal__close" onClick={onClose}>×</button>
+
+        <div className="authModal__tabs">
           <button
-            className={activeTab === 'login' ? 'active' : ''}
+            className={activeTab === 'login' ? 'authModal__tabs-button authModal__tabs-button--active' : 'authModal__tabs-button'}
             onClick={() => setActiveTab('login')}
           >
             Войти
           </button>
           <button
-            className={activeTab === 'register' ? 'active' : ''}
+            className={activeTab === 'register' ? 'authModal__tabs-button authModal__tabs-button--active' : 'authModal__tabs-button'}
             onClick={() => setActiveTab('register')}
           >
             Создать аккаунт
           </button>
         </div>
 
-        <div className="auth-modal-content">
+        <div className="authModal__content">
           {/* Вкладка "Войти" */}
           {activeTab === 'login' && (
             <form
-              className="auth-form login-form"
+              className="authModal__form authModal__form--login"
               action="https://georvnebrasko.github.io/jobpilot"
               method="post"
               onSubmit={handleLoginSubmit}
@@ -80,11 +81,11 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                 value={loginData.password}
                 onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
               />
-              <div className="auth-form-actions">
+              <div className="authModal__form-actions">
                 <label>
                   <input type="checkbox" name="remember" /> Запомнить
                 </label>
-                <a href="#!" className="forgot-password">Забыли пароль?</a>
+                <a href="#!" className="authModal__form-forgotPassword">Забыли пароль?</a>
               </div>
               <button type="submit">Войти</button>
             </form>
@@ -93,7 +94,7 @@ function AuthModal({ onClose, onRegister, onLogin }) {
           {/* Вкладка "Создать аккаунт" */}
           {activeTab === 'register' && (
             <form
-              className="auth-form register-form"
+              className="authModal__form authModal__form--register"
               onSubmit={handleRegisterSubmit}
               autoComplete="on"
             >
@@ -126,7 +127,7 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                 value={registerData.confirmPassword}
                 onChange={(e) => setRegisterData({ ...registerData, confirmPassword: e.target.value })}
               />
-              <label className="terms">
+              <label className="authModal__form-terms">
                 <input type="checkbox" required /> Я прочитал(а) и согласен(на) с условиями предоставления услуг.
               </label>
               <button type="submit">Создать аккаунт</button>

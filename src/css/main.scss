@@ -9,6 +9,20 @@ body, button, input {
   font-family: Manrope;
 }
 
-.home-page {
+.homePage {
     padding-top: 160px; // Отступ равен высоте Header
+}
+
+.findJobsPage {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 40px 60px;
+}
+
+.findJobsPage h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px; /* регулируйте, если нужен отступ как на первом скрине */
+  text-align: center;  /* вот здесь центрируем */
+  color: #333;
 }

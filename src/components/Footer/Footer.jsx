@@ -1,18 +1,18 @@
 import React from 'react';
-import './_footer.scss';
+import './Footer.scss';
 
 function Footer() {
   return (
     <footer className="footer">
-      <div className="container footer-top">
-        <div className="footer-col">
+      <div className="container footer__top">
+        <div className="footer__col">
           <h4>Моя работа</h4>
           <p>Позвоните сейчас: +7 (918) 825 51 15</p>
           <p>Москва</p>
           <a href="#!">Связаться с нами</a>
         </div>
 
-        <div className="footer-col">
+        <div className="footer__col">
           <h4>О нас</h4>
           <ul>
             <li><a href="#!">Контакты</a></li>
@@ -20,7 +20,7 @@ function Footer() {
           </ul>
         </div>
 
-        <div className="footer-col">
+        <div className="footer__col">
           <h4>Кандидат</h4>
           <ul>
             <li><a href="#!">Посмотреть вакансии</a></li>
@@ -30,7 +30,7 @@ function Footer() {
           </ul>
         </div>
 
-        <div className="footer-col">
+        <div className="footer__col">
           <h4>Работодатели</h4>
           <ul>
             <li><a href="#!">Опубликовать вакансию</a></li>
@@ -40,7 +40,7 @@ function Footer() {
           </ul>
         </div>
 
-        <div className="footer-col">
+        <div className="footer__col">
           <h4>Поддержка</h4>
           <ul>
             <li><a href="#!">Часто задаваемые вопросы</a></li>
@@ -50,7 +50,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="footer-bottom">
+      <div className="footer__bottom">
         <p>@2025 Моя работа - Портал вакансий. Все права сохранены.</p>
       </div>
     </footer>

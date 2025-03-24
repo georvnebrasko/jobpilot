@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.svg';
-import './_header.scss';
+import './Header.scss';
 
 function Header({ onOpenAuthModal, user, onLogout }) {
   const [showLogout, setShowLogout] = useState(false);
@@ -22,8 +22,8 @@ function Header({ onOpenAuthModal, user, onLogout }) {
         zIndex: 999,        // <-- Чтобы перекрывать другие элементы
       }}
     >
-      <div className="header-top">
-        <nav className="navbar">
+      <div className="header__top">
+        <nav className="header__navbar">
           <ul>
             <li><Link to="/">Главная</Link></li>
             <li><Link to="/find-jobs">Найти работу</Link></li>
@@ -34,36 +34,36 @@ function Header({ onOpenAuthModal, user, onLogout }) {
           </ul>
         </nav>
       </div>
-      <div className="header-bottom">
+      <div className="header__bottom">
         <Link to="/">
-          <img src={logo} alt="JobPilot Logo" className="header-logo" />
+          <img src={logo} alt="JobPilot Logo" className="header__logo" />
         </Link>
-        <div className="header-search-wrapper">
-          <span className="my-job">Моя работа</span>
+        <div className="header__searchWrapper">
+          <span className="header__myjob">Моя работа</span>
           <input
             type="text"
             placeholder="Название должности, ключевое слово, компания"
-            className="header-search"
+            className="header__search"
           />
         </div>
-        <div className="header-buttons">
+        <div className="header__buttons">
           {user ? (
-            <div className="user-logged-in">
-              <span className="user-nickname" onClick={handleNicknameClick}>
+            <div className="header__userloggedin">
+              <span className="header__usernickname" onClick={handleNicknameClick}>
                 {user.nickname}
               </span>
               {showLogout && (
-                <button className="logout-btn" onClick={onLogout}>
+                <button className="header__logoutbtn" onClick={onLogout}>
                   Выйти
                 </button>
               )}
             </div>
           ) : (
-            <button className="login-btn" onClick={onOpenAuthModal}>
+            <button className="header__loginbtn" onClick={onOpenAuthModal}>
               Войти
             </button>
           )}
-          <button className="publish-btn">Опубликовать вакансию</button>
+          <button className="header__publishbtn">Опубликовать вакансию</button>
         </div>
       </div>
     </header>

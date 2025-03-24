@@ -9,10 +9,10 @@
   padding: 10px 0;
 
   /* Верхняя панель (навигация) */
-  &-top {
+  .header__top {
     padding: 10px 20px;
 
-    .navbar {
+    .header__navbar {
       ul {
         list-style: none;
         display: flex;
@@ -36,7 +36,7 @@
   }
 
   /* Нижняя часть: логотип, поиск, кнопки */
-  &-bottom {
+  .header__bottom {
     display: flex;
     align-items: center;
     justify-content: center; /* всё по центру */
@@ -44,13 +44,13 @@
     gap: 30px;
 
     /* Логотип */
-    .header-logo {
+    .header__logo {
       width: 70px;
       height: auto;
     }
 
     /* Блок для «Моя работа» и поиска */
-    .header-search-wrapper {
+    .header__searchWrapper {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -59,12 +59,12 @@
       max-width: 1900px; /* Чтобы не растягивалось слишком */
     }
 
-    .my-job {
+    .header__myjob {
       font-weight: bold;
       font-size: 1.3rem;
     }
 
-    .header-search {
+    .header__search {
       flex-grow: 1;
       width: 100%;
       max-width: 900px; /* Длина поисковой строки */
@@ -75,23 +75,23 @@
     }
 
     /* Правый блок с кнопками */
-    .header-buttons {
+    .header__buttons {
       display: flex;
       align-items: center;
       gap: 15px;
 
       /* Когда пользователь залогинен */
-      .user-logged-in {
+      .header__userloggedin {
         display: flex;
         align-items: center;
         gap: 10px;
 
-        .user-nickname {
+        .header__usernickname {
           font-weight: bold;
           cursor: pointer; /* Чтобы было понятно, что можно кликнуть */
         }
 
-        .logout-btn {
+        .header__logoutbtn {
           background-color: transparent;
           border: 1px solid #2979ff;
           color: #2979ff;
@@ -103,7 +103,7 @@
       }
 
       /* Когда пользователь не залогинен */
-      .login-btn {
+      .header__loginbtn {
         background-color: transparent;
         border: 1px solid #2979ff;
         color: #2979ff;
@@ -113,7 +113,7 @@
         font-size: 14px;
       }
 
-      .publish-btn {
+      .header__publishbtn {
         background-color: #2979ff;
         color: #fff;
         border: none;

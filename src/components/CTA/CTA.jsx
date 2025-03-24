@@ -1,13 +1,13 @@
 import React from 'react';
 import arrowIcon from '../../assets/images/arrow.svg';
-import './_cta.scss';
+import './CTA.scss';
 
 function CTA() {
   return (
-    <section className="cta-section">
-      <div className="cta-block">
-        <h3>Стать кандидатом</h3>
-        <button className="cta-button">
+    <section className="cta">
+      <div className="cta__block">
+        <h3 className="cta__title">Стать кандидатом</h3>
+        <button className="cta__button">
           Зарегистрируйтесь сейчас
           <img 
             src={arrowIcon} 
@@ -17,9 +17,9 @@ function CTA() {
         </button>
       </div>
 
-      <div className="cta-block">
-        <h3>Стать работодателем</h3>
-        <button className="cta-button">
+      <div className="cta__block">
+        <h3 className="cta__title">Стать работодателем</h3>
+        <button className="cta__button">
           Зарегистрируйтесь сейчас
           <img 
             src={arrowIcon} 

@@ -1,37 +1,37 @@
 /* _popular-jobs.scss */
 @import '../../css/base/mixins';
 
-.popular-jobs {
+.popularJobs {
     background-color: #fff;
     padding: 40px 20px;
 
-    h2 {
+    .popularJobs__title {
         font-size: 1.8rem;
         font-weight: bold;
         margin-bottom: 20px;
     }
 
-    .jobs-list {
+    .popularJobs__list {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Адаптивная сетка */
         gap: 20px;
     }
 
-    .job-card {
+    .popularJobs__item {
         background-color: #f9f9f9;
         border-radius: 6px;
         padding: 15px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         text-align: left;
 
-        h4 {
+        .popularJobs__title {
             font-size: 1.2rem;
             font-weight: bold;
             color: #000;
             margin-bottom: 12px; /* Увеличенный отступ */
         }
 
-        p {
+        .popularJobs__positions {
             font-size: 1rem;
             color: #707070; /* Серый цвет, как в макете */
             margin-top: 12px; /* Промежуток между названием и количеством */

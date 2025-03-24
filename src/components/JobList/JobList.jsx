@@ -1,6 +1,6 @@
 // src/components/JobList.jsx
 import React from 'react';
-import './_job-list.scss';
+import './JobList.scss';
 
 // Импортируем картинки/логотипы (SVG, PNG, JPEG...):
 import upworkLogo from '../../assets/images/up.svg';
@@ -72,32 +72,32 @@ function JobList() {
   return (
     <section className="container job-list">
       {jobsData.map((job) => (
-        <div className="job-card" key={job.id}>
+        <div className="jobList__card" key={job.id}>
           {/* Левая часть: Логотип + Основная инфо */}
-          <div className="job-card-left">
+          <div className="jobList__cardleft">
             <img
               src={job.companyLogo}
               alt={job.title}
-              className="image__logo"
+              className="jobList__logo"
               style={{ width: '40px', marginRight: '15px' }}
             />
-            <div className="job-info">
-              <h3 className="job-title">{job.title}</h3>
-              <span className="job-type">{job.type}</span>
-              <div className="job-meta">
-                <span className="job-location">{job.location}</span>
-                <span className="job-salary">{job.salary}</span>
-                <span className="job-days-left">{job.daysLeft}</span>
+            <div className="jobList__info">
+              <h3 className="jobList__title">{job.title}</h3>
+              <span className="jobList__type">{job.type}</span>
+              <div className="jobList__meta">
+                <span className="jobList__location">{job.location}</span>
+                <span className="jobList__salary">{job.salary}</span>
+                <span className="jobList__daysleft">{job.daysLeft}</span>
               </div>
             </div>
           </div>
 
           {/* Правая часть: Кнопка отклика, иконка сохранения, etc. */}
-          <div className="job-card-right">
-            <button className="apply-btn">
+          <div className="jobList__cardright">
+            <button className="jobList__applybtn">
               Откликнуться <span style={{ marginLeft: '8px' }}>→</span>
             </button>
-            {/* Иконка закладки можно добавить <i className="bookmark-icon" /> */}
+            {/* Иконка закладки можно добавить <i className="jobList__bookmarkIcon" /> */}
           </div>
         </div>
       ))}

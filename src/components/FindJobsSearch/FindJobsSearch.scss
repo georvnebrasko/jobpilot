@@ -1,0 +1,56 @@
+.findJobsSearch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  
+    input,
+    select {
+      padding: 12px 15px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s;
+      background-color: #fff;
+  
+      &:focus {
+        border-color: #2979ff;
+      }
+    }
+  
+    .findJobsSearch__keywords {
+      width: 400px;
+    }
+  
+    .findJobsSearch__location {
+      width: 200px;
+    }
+  
+    .findJobsSearch__category {
+      width: 188px;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+  
+      &::-ms-expand {
+        display: none;
+      }
+    }
+  
+    .findJobsSearch__button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: #2979ff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+  
+      &:hover {
+        background-color: #185dc7;
+      }
+    }
+  }

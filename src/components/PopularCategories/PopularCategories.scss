@@ -1,19 +1,20 @@
 /* _popular-categories.scss */
 @import '../../css/base/mixins';
 
-.popular-categories {
+.popularCategories {
     background-color: #fff;
     padding: 40px 20px;
     text-align: center; /* Центрируем заголовок */
   
-    h2 {
+    .popularCategories__title {
       font-size: 1.8rem;
       font-weight: bold;
       margin-bottom: 20px;
     }
   
     /* Центрируем весь список */
-    .categories-list {
+    .popularCategories__list {
+      margin-top: 20px;
       display: flex;
       justify-content: center; /* Центрируем элементы */
       flex-wrap: wrap;
@@ -21,32 +22,30 @@
     }
   
     /* Стили для карточек */
-    .category-card {
+    .popularCategories__card {
       background-color: #f9f9f9;
       border-radius: 6px;
       padding: 20px;
       text-align: center;
       width: 180px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+
+      &Title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-align: center;
+      }
+  
+      .popularCategories__positions {
+        font-size: 0.9rem;
+        color: #666;
+      }
     }
   
-    /* Размер иконок */
-    .category-icon {
+    .popularCategories__icon {
       width: 50px;
       margin-bottom: 8px;
-    }
-  
-    /* Заголовки категорий */
-    .category-card h4 {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin-bottom: 5px;
-      text-align: center; /* Добавлено: выравнивание текста по центру */
-    }
-  
-    /* Количество позиций */
-    .category-card p {
-      font-size: 0.9rem;
-      color: #666;
     }
   }

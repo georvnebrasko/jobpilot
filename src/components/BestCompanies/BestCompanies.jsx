@@ -1,5 +1,5 @@
 import React from 'react';
-import './_best-companies.scss';
+import './BestCompanies.scss';
 
 // Импорт логотипов
 import freepikImg from '../../assets/images/aeroflot.svg';
@@ -11,76 +11,75 @@ import googleImg from '../../assets/images/google.svg';
 
 function BestCompanies() {
   return (
-    <section className="best-companies">
-      <h2>Лучшие компании</h2>
-      <div className="companies-grid">
-
-        <div className="company-card">
+    <section className="bestCompanies">
+      <h2 className="bestCompanies__title">Лучшие компании</h2>
+      
+      <div className="bestCompanies__grid">
+        <div className="bestCompanies__card">
           <img
             src={freepikImg}
             alt="Freepik"
-            className="company-logo"
+            className="bestCompanies__logo"
           />
           <h4>Freepik</h4>
           <p>Казань</p>
           <button>Открыть</button>
         </div>
 
-        <div className="company-card">
+        <div className="bestCompanies__card">
           <img
             src={appleImg}
             alt="Apple"
-            className="company-logo"
+            className="bestCompanies__logo"
           />
           <h4>Apple</h4>
           <p>Москва</p>
           <button>Открыть</button>
         </div>
 
-        <div className="company-card">
+        <div className="bestCompanies__card">
           <img
             src={facebookImg}
             alt="Facebook"
-            className="company-logo"
+            className="bestCompanies__logo"
           />
           <h4>Facebook</h4>
           <p>Ростов</p>
           <button>Открыть</button>
         </div>
 
-        <div className="company-card">
+        <div className="bestCompanies__card">
           <img
             src={figmaImg}
             alt="Figma"
-            className="company-logo"
+            className="bestCompanies__logo"
           />
           <h4>Figma</h4>
           <p>Сочи</p>
           <button>Открыть</button>
         </div>
 
-        <div className="company-card">
+        <div className="bestCompanies__card">
           <img
             src={gazpromImg}
             alt="Газпром"
-            className="company-logo"
+            className="bestCompanies__logo"
           />
           <h4>Slack</h4>
           <p>Новосибирск</p>
           <button>Открыть</button>
         </div>
 
-        <div className="company-card">
+        <div className="bestCompanies__card">
           <img
             src={googleImg}
             alt="Google"
-            className="company-logo"
+            className="bestCompanies__logo"
           />
           <h4>Google</h4>
           <p>Санкт-Петербург</p>
           <button>Открыть</button>
         </div>
-
       </div>
     </section>
   );

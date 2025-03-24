@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'; // ДОБАВЛЕНО: для навигации
 import illustration from '../../assets/images/Illustration.svg';
 import { useState } from 'react';
-import './_hero.scss';
+import './HeroSection.scss';
 
 function HeroSection({
   onJobChange,   // функция, вызываемая при изменении левого инпута
@@ -32,18 +32,18 @@ function HeroSection({
   };
 
   return (
-    <section className="hero">
+    <section className="heroSection">
       <div class="container">
-        <div className="hero-left">
+        <div className="heroSection__left">
           <h1>
             Найдите работу, которая <br />
             подходит вам по интересам и навыкам. <br />
           </h1>
-          <div className="search-block">
+          <div className="heroSection__searchblock">
             {/* Левый инпут - Должность, ключевое слово */}
             <input
               type="text"
-              className="search-input"
+              className="heroSection__searchinput"
               placeholder="Должность, ключевое слово"
               value={jobValue}
               onChange={event => setJobValue(event.target.value)}
@@ -52,7 +52,7 @@ function HeroSection({
             {/* Правый инпут - Местоположение */}
             <input
               type="text"
-              className="location-input"
+              className="heroSection__locationinput"
               placeholder="Ваше местоположение"
               value={placeValue}
               onChange={event => setPlaceValue(event.target.value)}
@@ -60,7 +60,7 @@ function HeroSection({
 
             {/* Кнопка - вызов общего поиска */}
             <button
-              className="search-button"
+              className="heroSection__searchbutton"
               // ИСПРАВЛЕНО: вместо onClick={() => onSearchClick && onSearchClick()}
               // вызываем handleSearch, где и формируем navigate
               onClick={handleSearch}
@@ -71,7 +71,7 @@ function HeroSection({
         </div>
 
         {/* Правая часть — иллюстрация */}
-        <div className="hero-right">
+        <div className="heroSection__right">
           <img
             src={illustration}
             alt="Hero Illustration"

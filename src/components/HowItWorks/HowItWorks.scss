@@ -1,5 +1,5 @@
-/* _how-it-works.scss */
-.how-it-works {
+/* _howitworks.scss */
+.howitworks {
     background-color: #fafafa;
     padding: 40px 20px;
     text-align: center;
@@ -9,13 +9,13 @@
       font-size: 1.6rem;
     }
   
-    .steps {
+    .howitworks__steps {
       display: flex;
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap; /* чтобы переносилось на мобилке */
   
-      .step {
+      .howitworks__step {
         background-color: #fff;
         border-radius: 6px;
         padding: 20px;

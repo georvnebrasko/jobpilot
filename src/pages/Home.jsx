@@ -37,7 +37,7 @@ function Home({ onOpenAuthModal, user, onLogout }) {
   };
 
   return (
-    <div className="home-page">
+    <div className="homePage">
       <Header 
         onOpenAuthModal={onOpenAuthModal} 
         user={user} 

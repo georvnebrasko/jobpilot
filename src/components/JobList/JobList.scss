@@ -1,12 +1,12 @@
 @import '../../css/base/mixins';
 
-.job-list {
+.jobList {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
   
-  .job-card {
+  .jobList__card {
     background-color: #fff;
     border: 1px solid #eaeaea;
     border-radius: 8px;
@@ -15,20 +15,20 @@
     justify-content: space-between;
     align-items: center;
   
-    .job-card-left {
+    .jobList__cardleft {
       display: flex;
       align-items: center;
   
-      .image__logo {
+      .jobList__logo {
         border-radius: 8px;
       }
   
-      .job-info {
-        .job-title {
+      .jobList__info {
+        .jobList__title {
           font-size: 1.1rem;
           margin-bottom: 4px;
         }
-        .job-type {
+        .jobList__type {
           background-color: #eef4ff;
           color: #2979ff;
           padding: 4px 8px;
@@ -37,7 +37,7 @@
           margin-bottom: 6px;
           display: inline-block;
         }
-        .job-meta {
+        .jobList__meta {
           display: flex;
           gap: 10px;
           font-size: 0.9rem;
@@ -46,12 +46,12 @@
       }
     }
   
-    .job-card-right {
+    .jobList__cardright {
       display: flex;
       align-items: center;
       gap: 8px;
   
-      .apply-btn {
+      .jobList__applybtn {
         background-color: #2979ff;
         color: #fff;
         border: none;
@@ -66,7 +66,7 @@
         }
       }
   
-      .bookmark-icon {
+      .jobList__bookmark-icon {
         color: #ccc;
         font-size: 1.2rem;
         cursor: pointer;

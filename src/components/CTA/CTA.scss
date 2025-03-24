@@ -1,0 +1,41 @@
+.cta {
+  display: flex;
+  gap: 20px;
+  justify-content: center;  /* Центрируем блоки на странице */
+  background-color: #fff;
+  padding: 40px 20px;
+
+  .cta__block {
+    background-color: #2979ff;
+    color: #fff;
+    padding: 30px;
+    border-radius: 6px;
+    width: 300px;
+    text-align: center;
+
+    /* Заголовок: "Стать кандидатом" / "Стать работодателем" */
+    .cta__title {
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      white-space: nowrap; /* Не переносить текст на новую строку */
+    }
+
+    /* Кнопка со стрелкой */
+    .cta__button {
+      background-color: #fff;
+      color: #2979ff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      display: inline-flex; 
+      align-items: center; /* чтобы иконка по вертикали была по центру */
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #e1edff;
+      }
+    }
+  }
+}

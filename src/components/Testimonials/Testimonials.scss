@@ -1,0 +1,57 @@
+.testimonialsBlock {
+  background-color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+
+  .testimonialsBlock__title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .testimonialsBlock__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .testimonialsBlock__item {
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .testimonialsBlock__stars {
+      font-size: 1.2rem;
+      color: #f5a623; /* Золотой цвет */
+      margin-bottom: 8px;
+    }
+
+    .testimonialsBlock__header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+
+    .testimonialsBlock__icon {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .testimonialsBlock__name {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .testimonialsBlock__position {
+      font-size: 0.9rem;
+      color: #666;
+    }
+  }
+}

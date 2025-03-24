@@ -1,0 +1,27 @@
+.paginationBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+  
+    .paginationBlock__arrow,
+    .paginationBlock__page {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+  
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  
+    .paginationBlock__page--active {
+      background-color: #2979ff;
+      color: #fff;
+    }
+  }
