@@ -18,7 +18,7 @@ function PopularCategories() {
             alt="Код и программирование"
             style={{ width: '50px', marginBottom: '8px' }}
           />
-          <h4>Код и программирование</h4>
+          <h4>Кодирование</h4>
           <p>312 Открытых позиций</p>
         </div>
 
@@ -48,7 +48,7 @@ function PopularCategories() {
             alt="Здравоохранение"
             style={{ width: '50px', marginBottom: '8px' }}
           />
-          <h4>Здравоохранение</h4>
+          <h4>Медицина</h4>
           <p>125 Открытых позиций</p>
         </div>
 
