@@ -4,7 +4,7 @@ import './_footer.scss';
 function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-top">
+      <div className="container footer-top">
         <div className="footer-col">
           <h4>Моя работа</h4>
           <p>Позвоните сейчас: +7 (918) 825 51 15</p>

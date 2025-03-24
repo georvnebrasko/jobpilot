@@ -3,7 +3,7 @@ import './_popular-jobs.scss';
 
 function PopularJobs() {
   return (
-    <section className="popular-jobs">
+    <section className="container popular-jobs">
       <h2>Самые популярные вакансии</h2>
       <div className="jobs-list">
         <div className="job-item">

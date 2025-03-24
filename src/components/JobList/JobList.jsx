@@ -70,7 +70,7 @@ const jobsData = [
 
 function JobList() {
   return (
-    <section className="job-list">
+    <section className="container job-list">
       {jobsData.map((job) => (
         <div className="job-card" key={job.id}>
           {/* Левая часть: Логотип + Основная инфо */}
@@ -78,7 +78,7 @@ function JobList() {
             <img
               src={job.companyLogo}
               alt={job.title}
-              className="job-company-logo"
+              className="image__logo"
               style={{ width: '40px', marginRight: '15px' }}
             />
             <div className="job-info">

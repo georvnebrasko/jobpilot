@@ -1,5 +1,7 @@
 /* Stats.css (или _stats.scss) */
 
+@import '../../css/base/mixins';
+
 /* Обёртка для блока статистики */
 .stats {
     display: flex;               /* размещаем 4 пункта в строку */

@@ -33,49 +33,51 @@ function HeroSection({
 
   return (
     <section className="hero">
-      <div className="hero-left">
-        <h1>
-          Найдите работу, которая <br />
-          подходит вам по интересам и навыкам. <br />
-        </h1>
-        <div className="search-block">
-          {/* Левый инпут - Должность, ключевое слово */}
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Должность, ключевое слово"
-            value={jobValue}
-            onChange={event => setJobValue(event.target.value)}
-          />
+      <div class="container">
+        <div className="hero-left">
+          <h1>
+            Найдите работу, которая <br />
+            подходит вам по интересам и навыкам. <br />
+          </h1>
+          <div className="search-block">
+            {/* Левый инпут - Должность, ключевое слово */}
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Должность, ключевое слово"
+              value={jobValue}
+              onChange={event => setJobValue(event.target.value)}
+            />
 
-          {/* Правый инпут - Местоположение */}
-          <input
-            type="text"
-            className="location-input"
-            placeholder="Ваше местоположение"
-            value={placeValue}
-            onChange={event => setPlaceValue(event.target.value)}
-          />
+            {/* Правый инпут - Местоположение */}
+            <input
+              type="text"
+              className="location-input"
+              placeholder="Ваше местоположение"
+              value={placeValue}
+              onChange={event => setPlaceValue(event.target.value)}
+            />
 
-          {/* Кнопка - вызов общего поиска */}
-          <button
-            className="search-button"
-            // ИСПРАВЛЕНО: вместо onClick={() => onSearchClick && onSearchClick()}
-            // вызываем handleSearch, где и формируем navigate
-            onClick={handleSearch}
-          >
-            Найти работу
-          </button>
+            {/* Кнопка - вызов общего поиска */}
+            <button
+              className="search-button"
+              // ИСПРАВЛЕНО: вместо onClick={() => onSearchClick && onSearchClick()}
+              // вызываем handleSearch, где и формируем navigate
+              onClick={handleSearch}
+            >
+              Найти работу
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* Правая часть — иллюстрация */}
-      <div className="hero-right">
-        <img
-          src={illustration}
-          alt="Hero Illustration"
-          style={{ width: '400px' }}
-        />
+        {/* Правая часть — иллюстрация */}
+        <div className="hero-right">
+          <img
+            src={illustration}
+            alt="Hero Illustration"
+            style={{ width: '400px' }}
+          />
+        </div>
       </div>
     </section>
   );

@@ -13,7 +13,7 @@ import './_stats.scss';
 
 function Stats() {
   return (
-    <section className="stats">
+    <section className="container stats">
       {/* 1. Рабочее место (с новой иконкой jobIcon) */}
       <div className="stats-item">
         <img 

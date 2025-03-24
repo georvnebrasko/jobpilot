@@ -5,3 +5,13 @@
     align-items: center;
     justify-content: center;
   }
+
+  .container {
+    max-width: 1200px;  /* Максимальная ширина */
+    width: 100%;        /* Занимает всю ширину, если экран уже 1200px */
+    margin-left: auto;  /* Центрирование */
+    margin-right: auto; /* Центрирование */
+    padding-left: 16px; /* Защитные отступы слева */
+    padding-right: 16px; /* Защитные отступы справа */
+    box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+  }
