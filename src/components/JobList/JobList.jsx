@@ -70,7 +70,7 @@ const jobsData = [
 
 function JobList() {
   return (
-    <section className="container job-list">
+    <section className="container jobList">
       {jobsData.map((job) => (
         <div className="jobList__card" key={job.id}>
           {/* Левая часть: Логотип + Основная инфо */}
