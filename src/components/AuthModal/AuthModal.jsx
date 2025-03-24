@@ -84,7 +84,7 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                 <label>
                   <input type="checkbox" name="remember" /> Запомнить
                 </label>
-                <a href="#!" className="forgot-password">Забыть пароль?</a>
+                <a href="#!" className="forgot-password">Забыли пароль?</a>
               </div>
               <button type="submit">Войти</button>
             </form>
