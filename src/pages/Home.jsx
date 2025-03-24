@@ -1,17 +1,17 @@
 // src/pages/Home.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // ДОБАВЛЕНО: для навигации
-import Header from '../components/Header';
-import HeroSection from '../components/HeroSection';
-import Stats from '../components/Stats';
-import PopularJobs from '../components/PopularJobs';
-import HowItWorks from '../components/HowItWorks';
-import PopularCategories from '../components/PopularCategories';
-import JobList from '../components/JobList';
-import BestCompanies from '../components/BestCompanies';
-import Testimonials from '../components/Testimonials';
-import CTA from '../components/CTA';
-import Footer from '../components/Footer';
+import Header from '../components/Header/Header';
+import HeroSection from '../components/HeroSection/HeroSection';
+import Stats from '../components/Stats/Stats';
+import PopularJobs from '../components/PopularJobs/PopularJobs';
+import HowItWorks from '../components/HowItWorks/HowItWorks';
+import PopularCategories from '../components/PopularCategories/PopularCategories';
+import JobList from '../components/JobList/JobList';
+import BestCompanies from '../components/BestCompanies/BestCompanies';
+import Testimonials from '../components/Testimonials/Testimonials';
+import CTA from '../components/CTA/CTA';
+import Footer from '../components/Footer/Footer';
 
 function Home({ onOpenAuthModal, user, onLogout }) {
   // Состояния для контекстного поиска:

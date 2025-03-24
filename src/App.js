@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import FindJobs from './pages/FindJobs';
-import AuthModal from './components/AuthModal';
+import AuthModal from './components/AuthModal/AuthModal';
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);

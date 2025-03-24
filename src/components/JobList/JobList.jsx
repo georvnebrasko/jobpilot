@@ -1,13 +1,14 @@
 // src/components/JobList.jsx
 import React from 'react';
+import './_job-list.scss';
 
 // Импортируем картинки/логотипы (SVG, PNG, JPEG...):
-import upworkLogo from '../assets/images/up.svg';
-import appleLogo from '../assets/images/apple.svg';
-import figmaLogo from '../assets/images/figma.svg';
-import uwLogo from '../assets/images/gazprom.svg'; // или другое
-import facebookLogo from '../assets/images/facebook.svg';
-import googleLogo from '../assets/images/google.svg';
+import upworkLogo from '../../assets/images/up.svg';
+import appleLogo from '../../assets/images/apple.svg';
+import figmaLogo from '../../assets/images/figma.svg';
+import uwLogo from '../../assets/images/gazprom.svg'; // или другое
+import facebookLogo from '../../assets/images/facebook.svg';
+import googleLogo from '../../assets/images/google.svg';
 
 // Пример массива (можете добавить/убрать вакансии):
 const jobsData = [

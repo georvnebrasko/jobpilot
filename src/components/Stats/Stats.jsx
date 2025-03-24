@@ -2,12 +2,14 @@
 import React from 'react';
 
 // Уже существующие иконки
-import companyIcon from '../assets/images/company.svg';
-import candidatesIcon from '../assets/images/candidates.svg';
+import companyIcon from '../../assets/images/company.svg';
+import candidatesIcon from '../../assets/images/candidates.svg';
 
 // Новые иконки для первого и четвёртого пункта
-import jobIcon from '../assets/images/job.svg';
-import vacanciesIcon from '../assets/images/job.svg';
+import jobIcon from '../../assets/images/job.svg';
+import vacanciesIcon from '../../assets/images/job.svg';
+
+import './_stats.scss';
 
 function Stats() {
   return (

@@ -1,8 +1,9 @@
 // src/components/HeroSection.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // ДОБАВЛЕНО: для навигации
-import illustration from '../assets/images/Illustration.svg';
+import illustration from '../../assets/images/Illustration.svg';
 import { useState } from 'react';
+import './_hero.scss';
 
 function HeroSection({
   onJobChange,   // функция, вызываемая при изменении левого инпута

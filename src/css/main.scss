@@ -1,0 +1,14 @@
+// src/assets/scss/main.scss
+@import './base/reset';
+@import './base/variables';
+@import './base/mixins';
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+body, button, input {
+  font-family: Manrope;
+}
+
+.home-page {
+    padding-top: 160px; // Отступ равен высоте Header
+  }

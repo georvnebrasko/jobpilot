@@ -1,5 +1,6 @@
 import React from 'react';
-import arrowIcon from '../assets/images/arrow.svg';
+import arrowIcon from '../../assets/images/arrow.svg';
+import './_cta.scss';
 
 function CTA() {
   return (

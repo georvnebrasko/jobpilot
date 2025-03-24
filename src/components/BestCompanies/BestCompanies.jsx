@@ -1,12 +1,13 @@
 import React from 'react';
+import './_best-companies.scss';
 
 // Импорт логотипов
-import freepikImg from '../assets/images/aeroflot.svg';
-import appleImg from '../assets/images/apple.svg';
-import facebookImg from '../assets/images/facebook.svg';
-import figmaImg from '../assets/images/figma.svg';
-import gazpromImg from '../assets/images/gazprom.svg';
-import googleImg from '../assets/images/google.svg';
+import freepikImg from '../../assets/images/aeroflot.svg';
+import appleImg from '../../assets/images/apple.svg';
+import facebookImg from '../../assets/images/facebook.svg';
+import figmaImg from '../../assets/images/figma.svg';
+import gazpromImg from '../../assets/images/gazprom.svg';
+import googleImg from '../../assets/images/google.svg';
 
 function BestCompanies() {
   return (

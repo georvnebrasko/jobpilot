@@ -1,4 +1,5 @@
 import React from 'react';
+import './_how-it-works.scss';
 
 function HowItWorks() {
   return (

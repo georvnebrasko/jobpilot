@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaUser } from 'react-icons/fa'; // Подключаем иконку пользователя
 
+import './_testimonials.scss';
+
 function Testimonials() {
   return (
     <section className="testimonials">

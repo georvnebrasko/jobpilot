@@ -1,9 +1,10 @@
 import React from 'react';
-import kodIcon from '../assets/images/kod.svg';
-import marcetingIcon from '../assets/images/marceting.svg';
-import musicIcon from '../assets/images/music.svg';
-import healthIcon from '../assets/images/health.svg';
-import naykaIcon from '../assets/images/nayka.svg';
+import kodIcon from '../../assets/images/kod.svg';
+import marcetingIcon from '../../assets/images/marceting.svg';
+import musicIcon from '../../assets/images/music.svg';
+import healthIcon from '../../assets/images/health.svg';
+import naykaIcon from '../../assets/images/nayka.svg';
+import './_popular-categories.scss';
 
 function PopularCategories() {
   return (

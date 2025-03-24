@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 // 1) Подключаем наши глобальные SCSS-стили (точку входа)
-import './assets/scss/main.scss';
+import './css/main.scss';
 
 // 2) Подключаем корневой компонент
 import App from './App';

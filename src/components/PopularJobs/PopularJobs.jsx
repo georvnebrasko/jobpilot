@@ -1,4 +1,5 @@
 import React from 'react';
+import './_popular-jobs.scss';
 
 function PopularJobs() {
   return (
