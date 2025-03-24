@@ -35,4 +35,6 @@
   .stats-item p {
     color: #555;
     font-size: 0.95rem;
+    white-space: nowrap;  /* Не переносить текст */
+    text-align: center;   /* Центрировать текст */
   }
