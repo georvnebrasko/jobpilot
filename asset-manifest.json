@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/jobpilot/static/css/main.ead98e67.css",
-    "main.js": "/jobpilot/static/js/main.3d072077.js",
+    "main.css": "/jobpilot/static/css/main.41210f1b.css",
+    "main.js": "/jobpilot/static/js/main.d149d23a.js",
     "static/media/Illustration.svg": "/jobpilot/static/media/Illustration.8495ba62d829807238187ca0afe41dd3.svg",
     "static/media/aeroflot.svg": "/jobpilot/static/media/aeroflot.f0a08f4d0f165a92e1fdee4ae307e6f4.svg",
     "static/media/yandexicon.svg": "/jobpilot/static/media/yandexicon.162a1c011ec5a46e1176f368ae2984fd.svg",
@@ -22,11 +22,11 @@
     "static/media/kod.svg": "/jobpilot/static/media/kod.70b0a6594c7940c548698e996f37746c.svg",
     "static/media/facebook.svg": "/jobpilot/static/media/facebook.22b93bc5bdf46d8dff7ff0f3e9679694.svg",
     "static/media/arrow.svg": "/jobpilot/static/media/arrow.3d4c4bab0b5fdee329ce7caaa36c994d.svg",
-    "main.ead98e67.css.map": "/jobpilot/static/css/main.ead98e67.css.map",
-    "main.3d072077.js.map": "/jobpilot/static/js/main.3d072077.js.map"
+    "main.41210f1b.css.map": "/jobpilot/static/css/main.41210f1b.css.map",
+    "main.d149d23a.js.map": "/jobpilot/static/js/main.d149d23a.js.map"
   },
   "entrypoints": [
-    "static/css/main.ead98e67.css",
-    "static/js/main.3d072077.js"
+    "static/css/main.41210f1b.css",
+    "static/js/main.d149d23a.js"
   ]
 }
