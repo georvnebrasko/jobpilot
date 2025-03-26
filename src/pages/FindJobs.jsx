@@ -9,8 +9,7 @@ import googleImg from '../assets/images/google.svg';
 import facebookImg from '../assets/images/facebook.svg';
 import yandexImg from '../assets/images/yandexicon.svg';
 
-// Импорт созданных нами компонентов:
-import FindJobsNav from '../components/FindJobsNav/FindJobsNav';
+// Импорт созданных компонентов:
 import FindJobsHeader from '../components/FindJobsHeader/FindJobsHeader';
 import FindJobsSearch from '../components/FindJobsSearch/FindJobsSearch';
 import JobCardsGrid from '../components/JobCardsGrid/JobCardsGrid';
@@ -96,12 +95,12 @@ function FindJobs() {
   const [searchParams] = useSearchParams();
 
   // Берем значения 'job' и 'loc' из query (или пустую строку, если нет)
-  const initialJob = searchParams.get('job') || '';
+  const initialJobParam = searchParams.get('job') || '';
   const initialLoc = searchParams.get('loc') || '';
 
-  // Поля для поиска
+  // Поля для поиска:
   const [companySearch, setCompanySearch] = useState('');
-  const [keyword, setKeyword] = useState(initialJob);
+  const [keyword, setKeyword] = useState(initialJobParam);
   const [location, setLocation] = useState(initialLoc);
   const [selectedCategory, setSelectedCategory] = useState('');
 
@@ -129,20 +128,12 @@ function FindJobs() {
     }
   };
 
-  // Фильтрация
+  // Фильтрация вакансий
   const filteredJobs = initialJobs.filter((job) => {
-    const matchesCompany = job.company
-      .toLowerCase()
-      .includes(companySearch.toLowerCase());
-    const matchesTitle = job.title
-      .toLowerCase()
-      .includes(keyword.toLowerCase());
-    const matchesLocation = job.city
-      .toLowerCase()
-      .includes(location.toLowerCase());
-    const matchesCategory = selectedCategory
-      ? job.category === selectedCategory
-      : true;
+    const matchesCompany = job.company.toLowerCase().includes(companySearch.toLowerCase());
+    const matchesTitle = job.title.toLowerCase().includes(keyword.toLowerCase());
+    const matchesLocation = job.city.toLowerCase().includes(location.toLowerCase());
+    const matchesCategory = selectedCategory ? job.category === selectedCategory : true;
     return matchesCompany && matchesTitle && matchesLocation && matchesCategory;
   });
 
@@ -153,40 +144,37 @@ function FindJobs() {
     .filter((job) => job !== undefined);
 
   return (
-    <div className="findJobsPage">
-      {/* Навигационная панель */}
-      <FindJobsNav />
-
-      {/* Верхняя панель */}
+    <>
+      {/* Шапка на всю ширину (FindJobsHeader) вынесена за пределы основного контейнера */}
       <FindJobsHeader
         logo={logo}
         companySearch={companySearch}
         setCompanySearch={setCompanySearch}
       />
 
-      <h1>Найти работу</h1>
+      {/* Остальной контент страницы (в контейнере с padding, если нужно) */}
+      <div className="findJobsPage">
+        <h1>Найти работу</h1>
 
-      {/* Расширенная панель поиска */}
-      <FindJobsSearch
-        keyword={keyword}
-        setKeyword={setKeyword}
-        location={location}
-        setLocation={setLocation}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
+        <FindJobsSearch
+          keyword={keyword}
+          setKeyword={setKeyword}
+          location={location}
+          setLocation={setLocation}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
 
-      {/* Сетка карточек */}
-      <JobCardsGrid finalJobs={finalJobs} />
+        <JobCardsGrid finalJobs={finalJobs} />
 
-      {/* Пагинация */}
-      <PaginationBlock
-        currentPage={currentPage}
-        goToPage={goToPage}
-        goPrev={goPrev}
-        goNext={goNext}
-      />
-    </div>
+        <PaginationBlock
+          currentPage={currentPage}
+          goToPage={goToPage}
+          goPrev={goPrev}
+          goNext={goNext}
+        />
+      </div>
+    </>
   );
 }
 
