@@ -1,0 +1,144 @@
+/* src/components/DetailedJobView/DetailedJobView.scss */
+
+.detailedJob {
+    background-color: #fff;
+    border-radius: 0; /* Если хотите без закругления */
+    padding: 20px;
+    box-shadow: none; /* Если хотите без тени */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 60vh;
+  }
+  
+  /* Плашка (если у вас здесь) */
+  .detailedJob__banner {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 0; /* Убираем скругление */
+    text-align: center;
+    margin-bottom: 0; /* Убираем отступ снизу, если нужно */
+  }
+  
+  .detailedJob__bannerText {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+  }
+  
+  .detailedJob__backWrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .detailedJob__backBtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.2s;
+  }
+  
+  .detailedJob__backBtn:hover {
+    color: #2979ff;
+  }
+  
+  .detailedJob__headerRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .detailedJob__titleWrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .detailedJob__companyLogo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+  
+  .detailedJob__title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Увеличиваем размер верхней кнопки "Подать заявку" */
+  .detailedJob__applyTopBtn {
+    background-color: #2979ff;
+    color: #fff;
+    border: none;
+    padding: 16px 100px; /* чуть больше */
+    border-radius: 6px;
+    font-size: 0.9rem; /* тоже чуть больше */
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .detailedJob__applyTopBtn:hover {
+    background-color: #185dc7;
+  }
+  
+  .detailedJob__content {
+    display: flex;
+    gap: 20px;
+  }
+
+  .detailedJob__content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start; /* Обеспечивает выравнивание по верхнему краю */
+  }
+  
+  .detailedJob__left {
+    flex: 2;
+  }
+  
+  .detailedJob__right {
+    background-color: #f8f8f8;
+    border-radius: 6px;
+    padding: 20px;
+    flex: 1;
+  }
+  
+  .detailedJob__section {
+    margin-bottom: 20px;
+  }
+  
+  .detailedJob__sectionTitle {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .detailedJob__responsList {
+    list-style: disc;
+    margin-left: 20px;
+    color: #444;
+  }
+  
+  .detailedJob__overviewBox {
+    margin-bottom: 20px;
+  }
+  
+  .detailedJob__infoList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  
+    li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: #555;
+  
+      strong {
+        color: #333;
+      }
+    }
+  }

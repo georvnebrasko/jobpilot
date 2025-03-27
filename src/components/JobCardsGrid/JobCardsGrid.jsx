@@ -1,7 +1,8 @@
+// src/components/JobCardsGrid/JobCardsGrid.jsx
 import React from 'react';
 import './JobCardsGrid.scss';
 
-function JobCardsGrid({ finalJobs }) {
+function JobCardsGrid({ finalJobs, onJobClick }) {
   return (
     <div className="jobCardsGrid">
       {finalJobs.map((job, idx) => (
@@ -19,7 +20,10 @@ function JobCardsGrid({ finalJobs }) {
           <p>{job.city}</p>
           <p>{job.salary}</p>
 
-          <button>Откликнуться</button>
+          {/* Новая часть: добавлен onClick, если функция передана */}
+          <button onClick={() => onJobClick && onJobClick(idx)}>
+            Откликнуться
+          </button>
         </div>
       ))}
     </div>

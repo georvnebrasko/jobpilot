@@ -1,7 +1,9 @@
+// src/App.js
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import FindJobs from './pages/FindJobs';
+import DetailedJobPage from './pages/DetailedJobPage';
 import AuthModal from './components/AuthModal/AuthModal';
 
 function App() {
@@ -11,7 +13,7 @@ function App() {
   const openModal = () => setShowAuthModal(true);
   const closeModal = () => setShowAuthModal(false);
 
-  // Регистрация (пример)
+  // Пример регистрации
   const handleRegister = (registerData) => {
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
     if (accounts.find(acc => acc.email === registerData.email)) {
@@ -28,7 +30,7 @@ function App() {
     setShowAuthModal(false);
   };
 
-  // Вход (пример)
+  // Пример входа
   const handleLogin = (loginData) => {
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
     const found = accounts.find(
@@ -69,6 +71,8 @@ function App() {
           }
         />
         <Route path="/find-jobs" element={<FindJobs />} />
+        {/* Новый маршрут: детальная страница вакансии */}
+        <Route path="/vacancy/:jobId" element={<DetailedJobPage />} />
       </Routes>
     </BrowserRouter>
   );
