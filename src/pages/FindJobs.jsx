@@ -1,30 +1,24 @@
 // src/pages/FindJobs.jsx
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate, } from 'react-router-dom';
-
-// Импорт картинок:
-import logo from '../assets/images/logo.svg';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import appleImg from '../assets/images/apple.svg';
 import googleImg from '../assets/images/google.svg';
 import facebookImg from '../assets/images/facebook.svg';
 import yandexImg from '../assets/images/yandexicon.svg';
 
-// Импорт компонентов:
-import FindJobsHeader from '../components/FindJobsHeader/FindJobsHeader';
 import FindJobsSearch from '../components/FindJobsSearch/FindJobsSearch';
 import JobCardsGrid from '../components/JobCardsGrid/JobCardsGrid';
 import PaginationBlock from '../components/PaginationBlock/PaginationBlock';
 
-// Массив вакансий (пример)
 const initialJobs = [
   {
+    id: 0,
     title: 'Старший UX-дизайнер',
     city: 'Москва',
     salary: '30 000 - 35 000',
     category: 'design',
     company: 'Apple',
     companyIcon: appleImg,
-    // Дополнительные поля для детального просмотра:
     postedDate: '15 августа 2025',
     dueDate: '15 октября 2025',
     education: 'Высшее',
@@ -37,6 +31,7 @@ const initialJobs = [
     ],
   },
   {
+    id: 1,
     title: 'Младший графический дизайнер',
     city: 'Санкт-Петербург',
     salary: '50 000 - 70 000',
@@ -55,6 +50,7 @@ const initialJobs = [
     ],
   },
   {
+    id: 2,
     title: 'Визуальный дизайнер',
     city: 'Ростов',
     salary: '20 000 - 25 000',
@@ -73,6 +69,7 @@ const initialJobs = [
     ],
   },
   {
+    id: 3,
     title: 'Инженер-программист',
     city: 'Казань',
     salary: '15 000 - 20 000',
@@ -91,6 +88,7 @@ const initialJobs = [
     ],
   },
   {
+    id: 4,
     title: 'Фронтенд-разработчик',
     city: 'Астрахань',
     salary: '50 000 - 60 000',
@@ -109,6 +107,7 @@ const initialJobs = [
     ],
   },
   {
+    id: 5,
     title: 'Бэкенд-разработчик',
     city: 'Москва',
     salary: '35 000 - 40 000',
@@ -127,6 +126,7 @@ const initialJobs = [
     ],
   },
   {
+    id: 6,
     title: 'Маркетолог',
     city: 'Казань',
     salary: '20 000 - 25 000',
@@ -145,6 +145,7 @@ const initialJobs = [
     ],
   },
   {
+    id: 7,
     title: 'Таргетолог',
     city: 'Санкт-Петербург',
     salary: '50 000 - 90 000',
@@ -179,7 +180,7 @@ function FindJobs() {
   const initialLoc = searchParams.get('loc') || '';
 
   // Поля для поиска:
-  const [companySearch, setCompanySearch] = useState('');
+  const [companySearch] = useState('');
   const [keyword, setKeyword] = useState(initialJobParam);
   const [location, setLocation] = useState(initialLoc);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -228,11 +229,7 @@ function FindJobs() {
 
   return (
     <>
-      <FindJobsHeader
-        logo={logo}
-        companySearch={companySearch}
-        setCompanySearch={setCompanySearch}
-      />
+      {/* Header теперь общий, поэтому его не импортируем здесь */}
       <div className="findJobsPage">
         <h1>Найти работу</h1>
         <FindJobsSearch

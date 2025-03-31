@@ -11,7 +11,6 @@ import JobList from '../components/JobList/JobList';
 import BestCompanies from '../components/BestCompanies/BestCompanies';
 import Testimonials from '../components/Testimonials/Testimonials';
 import CTA from '../components/CTA/CTA';
-import Footer from '../components/Footer/Footer';
 
 function Home({ onOpenAuthModal, user, onLogout }) {
   // Состояния для контекстного поиска:
@@ -60,7 +59,6 @@ function Home({ onOpenAuthModal, user, onLogout }) {
       <BestCompanies />
       <Testimonials />
       <CTA />
-      <Footer />
     </div>
   );
 }

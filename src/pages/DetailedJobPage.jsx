@@ -1,9 +1,7 @@
 // src/pages/DetailedJobPage.jsx
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import FindJobsHeader from '../components/FindJobsHeader/FindJobsHeader';
 import DetailedJobView from '../components/DetailedJobView/DetailedJobView';
-import logo from '../assets/images/logo.svg';
 
 // Если у вас массив вакансий вынесен в отдельный файл, импортируйте его;
 // для примера здесь он дублируется:
@@ -228,13 +226,13 @@ function DetailedJobPage() {
     const { jobId } = useParams();
     const navigate = useNavigate();
   
-    const index = parseInt(jobId, 10);
-    const jobData = initialJobs[index];
+    // Преобразуем jobId в число и находим соответствующую вакансию по id
+    const numericId = parseInt(jobId, 10);
+    const jobData = initialJobs.find((job) => job.id === numericId);
   
     if (!jobData) {
       return (
         <div className="detailedJobPage">
-          <FindJobsHeader logo={logo} companySearch="" setCompanySearch={() => {}} />
           <div className="detailedJobPage__error">
             <h2>Вакансия не найдена.</h2>
             <button onClick={() => navigate('/find-jobs')}>Вернуться</button>
@@ -243,17 +241,21 @@ function DetailedJobPage() {
       );
     }
   
+
     return (
-      <div className="detailedJobPage">
-        <FindJobsHeader logo={logo} companySearch="" setCompanySearch={() => {}} />
-  
-        <div className="detailedJobPage__banner">
-          <h3 className="detailedJobPage__bannerText">Детали вакансии</h3>
+        <div className="detailedJobPage">
+          {/* Шапка (общий, поэтому он не повторяется, если вы используете его в App.js, его можно убрать здесь) */}
+    
+          {/* Контейнер для контента, чтобы отступы применялись только к нему */}
+          <div className="detailedJobPage__content">
+            <div className="detailedJobPage__banner">
+              <h3 className="detailedJobPage__bannerText">Детали вакансии</h3>
+            </div>
+    
+            <DetailedJobView jobData={jobData} />
+          </div>
         </div>
-  
-        <DetailedJobView jobData={jobData} />
-      </div>
-    );
-  }
-  
-  export default DetailedJobPage;
+      );
+    }
+    
+    export default DetailedJobPage;

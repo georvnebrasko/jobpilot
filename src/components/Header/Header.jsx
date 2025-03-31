@@ -27,9 +27,6 @@ function Header({ onOpenAuthModal, user, onLogout }) {
           <ul>
             <li><Link to="/">Главная</Link></li>
             <li><Link to="/find-jobs">Найти работу</Link></li>
-            <li><a href="#!">Работодатели</a></li>
-            <li><a href="#!">Кандидаты</a></li>
-            <li><a href="#!">Цены</a></li>
             <li><a href="#!">Поддержка клиентов</a></li>
           </ul>
         </nav>

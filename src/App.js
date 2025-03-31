@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import FindJobs from './pages/FindJobs';
 import DetailedJobPage from './pages/DetailedJobPage';
 import AuthModal from './components/AuthModal/AuthModal';
+import Header from './components/Header/Header'; // Добавляем Header
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -13,7 +15,7 @@ function App() {
   const openModal = () => setShowAuthModal(true);
   const closeModal = () => setShowAuthModal(false);
 
-  // Пример регистрации
+  // Регистрация (пример)
   const handleRegister = (registerData) => {
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
     if (accounts.find(acc => acc.email === registerData.email)) {
@@ -30,7 +32,7 @@ function App() {
     setShowAuthModal(false);
   };
 
-  // Пример входа
+  // Вход (пример)
   const handleLogin = (loginData) => {
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
     const found = accounts.find(
@@ -50,30 +52,37 @@ function App() {
 
   return (
     <BrowserRouter basename="/jobpilot">
+      {/* Header теперь отображается на всех страницах */}
+      <Header 
+        onOpenAuthModal={openModal} 
+        user={user} 
+        onLogout={handleLogout} 
+      />
+
       <Routes>
         <Route
           path="/"
           element={
-            <>
-              <Home 
-                onOpenAuthModal={openModal} 
-                user={user} 
-                onLogout={handleLogout} 
-              />
-              {showAuthModal && (
-                <AuthModal 
-                  onClose={closeModal} 
-                  onRegister={handleRegister} 
-                  onLogin={handleLogin} 
-                />
-              )}
-            </>
+            <Home 
+              onOpenAuthModal={openModal} 
+              user={user} 
+              onLogout={handleLogout} 
+            />
           }
         />
         <Route path="/find-jobs" element={<FindJobs />} />
-        {/* Новый маршрут: детальная страница вакансии */}
         <Route path="/vacancy/:jobId" element={<DetailedJobPage />} />
       </Routes>
+
+      <Footer />
+
+      {showAuthModal && (
+        <AuthModal 
+          onClose={closeModal} 
+          onRegister={handleRegister} 
+          onLogin={handleLogin} 
+        />
+      )}
     </BrowserRouter>
   );
 }
