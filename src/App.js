@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import FindJobs from './pages/FindJobs';
 import DetailedJobPage from './pages/DetailedJobPage';
+import PersonalProfile from './pages/PersonalProfile';
 import AuthModal from './components/AuthModal/AuthModal';
 import Header from './components/Header/Header'; // Добавляем Header
 import Footer from './components/Footer/Footer';
@@ -70,6 +71,7 @@ function App() {
             />
           }
         />
+        <Route path="/personal-profile/*" element={<PersonalProfile onLogout={handleLogout} user={user} />} />
         <Route path="/find-jobs" element={<FindJobs />} />
         <Route path="/vacancy/:jobId" element={<DetailedJobPage />} />
       </Routes>

@@ -1,3 +1,5 @@
+/* src/components/AuthModal/AuthModal.scss */
+
 .authModal__overlay {
   position: fixed;
   top: 0;
@@ -46,7 +48,7 @@
     transition: border-bottom 0.2s;
     border-bottom: 2px solid transparent;
 
-    .authModal--active {
+    &.authModal__tabs-button--active {
       border-bottom-color: #2979ff;
       color: #2979ff;
     }
@@ -109,6 +111,30 @@
 
       input {
         margin-right: 8px;
+      }
+    }
+
+    /* Новый блок для выбора типа регистрации */
+    .authModal__form-userType {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 0.9rem;
+      color: #333;
+      margin: 10px 0;
+
+      span {
+        font-weight: bold;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        
+        input[type="radio"] {
+          margin-right: 5px;
+        }
       }
     }
   }

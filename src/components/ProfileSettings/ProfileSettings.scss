@@ -1,0 +1,54 @@
+// src/components/ProfileSettings/ProfileSettings.scss
+
+.profileSettings {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
+  
+  .profileSettings__title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .profileSettings__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .profileSettings__field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profileSettings__label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .profileSettings__input,
+  .profileSettings__textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .profileSettings__saveButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .profileSettings__saveButton:hover {
+    background-color: #1976d2;
+  }

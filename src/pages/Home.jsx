@@ -1,7 +1,6 @@
 // src/pages/Home.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // ДОБАВЛЕНО: для навигации
-import Header from '../components/Header/Header';
 import HeroSection from '../components/HeroSection/HeroSection';
 import Stats from '../components/Stats/Stats';
 import PopularJobs from '../components/PopularJobs/PopularJobs';
@@ -10,12 +9,10 @@ import PopularCategories from '../components/PopularCategories/PopularCategories
 import JobList from '../components/JobList/JobList';
 import BestCompanies from '../components/BestCompanies/BestCompanies';
 import Testimonials from '../components/Testimonials/Testimonials';
-import CTA from '../components/CTA/CTA';
 
 function Home({ onOpenAuthModal, user, onLogout }) {
   // Состояния для контекстного поиска:
   // Верхняя строка — поиск по компании, вакансии и ключевым словам
-  const [topSearch, setTopSearch] = useState('');
   // В HeroSection: левая область для вакансии и ключевых слов
   const [vacancySearch, setVacancySearch] = useState('');
   // В HeroSection: правая область для места
@@ -37,13 +34,6 @@ function Home({ onOpenAuthModal, user, onLogout }) {
 
   return (
     <div className="homePage">
-      <Header 
-        onOpenAuthModal={onOpenAuthModal} 
-        user={user} 
-        onLogout={onLogout}
-        topSearch={topSearch}
-        onChangeTopSearch={setTopSearch}
-      />
       <HeroSection 
         vacancySearch={vacancySearch}
         onChangeVacancy={setVacancySearch}
@@ -58,7 +48,6 @@ function Home({ onOpenAuthModal, user, onLogout }) {
       <JobList />
       <BestCompanies />
       <Testimonials />
-      <CTA />
     </div>
   );
 }

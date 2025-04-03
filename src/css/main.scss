@@ -10,12 +10,12 @@ body, button, input {
 }
 
 .homePage {
-    padding-top: 160px; // Отступ равен высоте Header
+    padding-top: 0px; // Отступ равен высоте Header
 }
 
 .findJobsPage {
   min-height: 115vh;
-  padding-top: 190px;
+  padding-top: 30px;
   max-width: 1400px;  /* Максимальная ширина */
   width: 100%;        /* Занимает всю ширину, если экран уже 1200px */
   margin-left: auto;  /* Центрирование */
@@ -52,7 +52,7 @@ body, button, input {
 
 .detailedJobPage {  
     min-height: 115vh;    
-    padding-top: 170px;
+    padding-top: 30px;
     max-width: 1400px;  /* Максимальная ширина */
     width: 100%;        /* Занимает всю ширину, если экран уже 1200px */
     margin-left: auto;  /* Центрирование */
@@ -75,3 +75,36 @@ body, button, input {
     margin: 0;
   }
 }  
+
+
+/* src/pages/PersonalProfile.scss */
+.personalProfile {
+  min-height: 65vh;
+  padding-top: 30px;
+  max-width: 1400px;  /* Максимальная ширина */
+  width: 100%;        /* Занимает всю ширину, если экран уже 1200px */
+  margin-left: auto;  /* Центрирование */
+  margin-right: auto; /* Центрирование */
+  padding-left: 16px; /* Защитные отступы слева */
+  padding-right: 16px; /* Защитные отступы справа */
+  box-sizing: border-box; /* Чтобы padding не увеличивал ширину */ 
+
+  .personalProfile__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .personalProfile__title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .personalProfile__info {
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+  }
+}

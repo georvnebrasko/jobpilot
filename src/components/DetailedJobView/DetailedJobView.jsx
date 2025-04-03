@@ -22,15 +22,24 @@ function DetailedJobView({ jobData }) {
     city,
   } = jobData;
 
-  // Вместо navigate(-1) используем navigate('/find-jobs')
+  // Обработчик возврата назад
   const handleGoBack = () => {
     navigate(-1);
   };
 
+  // Обработчик подачи заявки: сохраняем данные вакансии в localStorage
+  const handleApply = () => {
+    // Читаем текущие отклики или создаём пустой массив, если их ещё нет
+    const existingApplications = JSON.parse(localStorage.getItem('jobApplications')) || [];
+    // Добавляем новую заявку; можно добавить проверку на уникальность, если нужно
+    existingApplications.push(jobData);
+    localStorage.setItem('jobApplications', JSON.stringify(existingApplications));
+    alert('Ваша заявка успешно подана!');
+  };
+
   return (
     <div className="detailedJob">
-      {/* Если у вас есть плашка "Детали вакансии", она может быть здесь */}
-      {/* <div className="detailedJob__banner">...Плашка...</div> */}
+      {/* Плашка "Детали вакансии" может быть здесь */}
 
       {/* Кнопка «Назад» */}
       <div className="detailedJob__backWrapper">
@@ -51,7 +60,12 @@ function DetailedJobView({ jobData }) {
           )}
           <h2 className="detailedJob__title">{title}</h2>
         </div>
-        <button className="detailedJob__applyTopBtn">Подать заявку</button>
+        <button 
+          className="detailedJob__applyTopBtn" 
+          onClick={handleApply}
+        >
+          Подать заявку
+        </button>
       </div>
 
       {/* Основной контент */}

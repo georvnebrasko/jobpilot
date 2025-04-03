@@ -1,25 +1,30 @@
 // src/components/Header.jsx
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo.svg';
 import './Header.scss';
 
 function Header({ onOpenAuthModal, user, onLogout }) {
-  const [showLogout, setShowLogout] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleNicknameClick = () => {
-    setShowLogout(prev => !prev);
+  const handleLogoutClick = () => {
+    onLogout();
+    // Если мы на странице PersonalProfile, переходим на главную страницу
+    if (location.pathname === '/personal-profile') {
+      navigate('/');
+    }
   };
 
   return (
     <header
       className="header"
       style={{
-        position: 'fixed',  // <-- Делаем "прилипание" к верху
+        position: 'sticky', // или fixed, если требуется
         top: 0,
         left: 0,
         width: '100%',
-        zIndex: 999,        // <-- Чтобы перекрывать другие элементы
+        zIndex: 999,
       }}
     >
       <div className="header__top">
@@ -46,14 +51,12 @@ function Header({ onOpenAuthModal, user, onLogout }) {
         <div className="header__buttons">
           {user ? (
             <div className="header__userloggedin">
-              <span className="header__usernickname" onClick={handleNicknameClick}>
+              <Link to="/personal-profile" className="header__usernickname">
                 {user.nickname}
-              </span>
-              {showLogout && (
-                <button className="header__logoutbtn" onClick={onLogout}>
-                  Выйти
-                </button>
-              )}
+              </Link>
+              <button className="header__logoutbtn" onClick={handleLogoutClick}>
+                Выйти
+              </button>
             </div>
           ) : (
             <button className="header__loginbtn" onClick={onOpenAuthModal}>

@@ -1,15 +1,17 @@
+// src/components/AuthModal/AuthModal.jsx
 import React, { useState } from 'react';
 import './AuthModal.scss'; // Файл стилей с новыми названиями классов
 
 function AuthModal({ onClose, onRegister, onLogin }) {
   const [activeTab, setActiveTab] = useState('login');
 
-  // Стейт для регистрации
+  // Стейт для регистрации (добавляем новое поле userType)
   const [registerData, setRegisterData] = useState({
     nickname: '',
     email: '',
     password: '',
     confirmPassword: '',
+    userType: 'applicant', // 'applicant' – соискатель, 'employer' – работодатель
   });
 
   // Стейт для логина
@@ -127,6 +129,34 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                 value={registerData.confirmPassword}
                 onChange={(e) => setRegisterData({ ...registerData, confirmPassword: e.target.value })}
               />
+              {/* Новый блок для выбора типа регистрации */}
+              <div className="authModal__form-userType">
+                <span>Регистрация как:</span>
+                <label>
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="applicant"
+                    checked={registerData.userType === 'applicant'}
+                    onChange={(e) =>
+                      setRegisterData({ ...registerData, userType: e.target.value })
+                    }
+                  />
+                  Соискатель
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="employer"
+                    checked={registerData.userType === 'employer'}
+                    onChange={(e) =>
+                      setRegisterData({ ...registerData, userType: e.target.value })
+                    }
+                  />
+                  Работодатель
+                </label>
+              </div>
               <label className="authModal__form-terms">
                 <input type="checkbox" required /> Я прочитал(а) и согласен(на) с условиями предоставления услуг.
               </label>

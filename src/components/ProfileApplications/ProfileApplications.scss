@@ -1,0 +1,79 @@
+// src/components/ProfileApplications/ProfileApplications.scss
+
+.profileApplications {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+  
+    .profileApplications__title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+  
+    .profileApplications__empty {
+      text-align: center;
+      color: #555;
+    }
+  
+    .profileApplications__list {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .profileApplications__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #f9f9f9;
+      }
+  
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  
+    .profileApplications__info {
+      flex: 1;
+    }
+  
+    .profileApplications__jobTitle {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  
+    .profileApplications__company {
+      font-size: 1rem;
+      color: #777;
+      margin-bottom: 5px;
+    }
+  
+    .profileApplications__details {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  
+    .profileApplications__deleteBtn {
+      background-color: #ff4d4f;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #e04343;
+      }
+    }
+  }
