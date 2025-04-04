@@ -1,10 +1,12 @@
 // src/App.js
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import FindJobs from './pages/FindJobs';
 import DetailedJobPage from './pages/DetailedJobPage';
 import PersonalProfile from './pages/PersonalProfile';
+import CompanyDetail from './components/CompanyDetail/CompanyDetail';
 import AuthModal from './components/AuthModal/AuthModal';
 import Header from './components/Header/Header'; // Добавляем Header
 import Footer from './components/Footer/Footer';
@@ -53,6 +55,7 @@ function App() {
 
   return (
     <BrowserRouter basename="/jobpilot">
+            <ScrollToTop />
       {/* Header теперь отображается на всех страницах */}
       <Header 
         onOpenAuthModal={openModal} 
@@ -74,6 +77,7 @@ function App() {
         <Route path="/personal-profile/*" element={<PersonalProfile onLogout={handleLogout} user={user} />} />
         <Route path="/find-jobs" element={<FindJobs />} />
         <Route path="/vacancy/:jobId" element={<DetailedJobPage />} />
+        <Route path="/company/:companyId" element={<CompanyDetail />} />
       </Routes>
 
       <Footer />

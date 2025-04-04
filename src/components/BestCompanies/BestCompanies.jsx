@@ -1,15 +1,27 @@
+// src/components/BestCompanies.jsx
 import React from 'react';
 import './BestCompanies.scss';
+
+// Импортируем хук навигации
+import { useNavigate } from 'react-router-dom';
 
 // Импорт логотипов
 import freepikImg from '../../assets/images/aeroflot.svg';
 import appleImg from '../../assets/images/apple.svg';
 import facebookImg from '../../assets/images/facebook.svg';
 import figmaImg from '../../assets/images/figma.svg';
-import gazpromImg from '../../assets/images/gazprom.svg';
+import yandexImg from '../../assets/images/yandexicon.svg';
 import googleImg from '../../assets/images/google.svg';
 
 function BestCompanies() {
+  const navigate = useNavigate();
+
+  // Обработчик перехода на страницу компании по имени
+  const handleOpenCompany = (companyName) => {
+    // Переходим на страницу компании, например: /company/apple
+    navigate(`/company/${companyName.toLowerCase()}`);
+  };
+
   return (
     <section className="bestCompanies">
       <h2 className="bestCompanies__title">Лучшие компании</h2>
@@ -22,8 +34,8 @@ function BestCompanies() {
             className="bestCompanies__logo"
           />
           <h4>Freepik</h4>
-          <p>Казань</p>
-          <button>Открыть</button>
+          <p>Мадрид</p>
+          <button onClick={() => handleOpenCompany('freepik')}>Открыть</button>
         </div>
 
         <div className="bestCompanies__card">
@@ -33,8 +45,8 @@ function BestCompanies() {
             className="bestCompanies__logo"
           />
           <h4>Apple</h4>
-          <p>Москва</p>
-          <button>Открыть</button>
+          <p>Купертино</p>
+          <button onClick={() => handleOpenCompany('apple')}>Открыть</button>
         </div>
 
         <div className="bestCompanies__card">
@@ -44,8 +56,8 @@ function BestCompanies() {
             className="bestCompanies__logo"
           />
           <h4>Facebook</h4>
-          <p>Ростов</p>
-          <button>Открыть</button>
+          <p>Менло-Парк</p>
+          <button onClick={() => handleOpenCompany('facebook')}>Открыть</button>
         </div>
 
         <div className="bestCompanies__card">
@@ -55,19 +67,19 @@ function BestCompanies() {
             className="bestCompanies__logo"
           />
           <h4>Figma</h4>
-          <p>Сочи</p>
-          <button>Открыть</button>
+          <p>Сан-Франциско</p>
+          <button onClick={() => handleOpenCompany('figma')}>Открыть</button>
         </div>
 
         <div className="bestCompanies__card">
           <img
-            src={gazpromImg}
+            src={yandexImg}
             alt="Газпром"
             className="bestCompanies__logo"
           />
-          <h4>Slack</h4>
-          <p>Новосибирск</p>
-          <button>Открыть</button>
+          <h4>Яндекс</h4>
+          <p>Москва</p>
+          <button onClick={() => handleOpenCompany('yandex')}>Открыть</button>
         </div>
 
         <div className="bestCompanies__card">
@@ -77,8 +89,8 @@ function BestCompanies() {
             className="bestCompanies__logo"
           />
           <h4>Google</h4>
-          <p>Санкт-Петербург</p>
-          <button>Открыть</button>
+          <p>Маунтин-Вью</p>
+          <button onClick={() => handleOpenCompany('google')}>Открыть</button>
         </div>
       </div>
     </section>

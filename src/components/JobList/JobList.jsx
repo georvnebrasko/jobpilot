@@ -2,73 +2,83 @@
 import React from 'react';
 import './JobList.scss';
 
+// Импортируем useNavigate для навигации
+import { useNavigate } from 'react-router-dom';
+
 // Импортируем картинки/логотипы (SVG, PNG, JPEG...):
-import upworkLogo from '../../assets/images/up.svg';
 import appleLogo from '../../assets/images/apple.svg';
-import figmaLogo from '../../assets/images/figma.svg';
-import uwLogo from '../../assets/images/gazprom.svg'; // или другое
 import facebookLogo from '../../assets/images/facebook.svg';
 import googleLogo from '../../assets/images/google.svg';
+import yandexImg from '../../assets/images/yandexicon.svg';
 
 // Пример массива (можете добавить/убрать вакансии):
 const jobsData = [
   {
     id: 1,
-    companyLogo: upworkLogo,
-    title: 'Старший дизайнер пользовательского опыта',
+    companyLogo: appleLogo,
+    title: 'Младший графический дизайнер',
     type: 'Полный рабочий день',
-    location: 'Пятигорск',
-    salary: '30 000 – 35 000',
-    daysLeft: 'Осталось 4 дня',
+    location: 'Майами',
+    salary: '$3500',
+    daysLeft: 'Осталось 9 дней',
   },
   {
     id: 2,
-    companyLogo: appleLogo,
-    title: 'Программист',
+    companyLogo: googleLogo,
+    title: 'Визуальный дизайнер',
     type: 'Полный рабочий день',
-    location: 'Астрахань',
-    salary: '50 000 - 60 000',
-    daysLeft: 'Осталось 4 дня',
-  },
-  {
-    id: 3,
-    companyLogo: figmaLogo,
-    title: 'Младший графический дизайнер',
-    type: 'Полный рабочий день',
-    location: 'Москва',
-    salary: '50 000 - 70 000',
+    location: 'Вашингтон',
+    salary: '$5000',
     daysLeft: 'Осталось 4 дня',
   },
   {
     id: 4,
-    companyLogo: uwLogo, // Условно для «Udemy» или «Upwork»
-    title: 'Дизайнер',
-    type: 'Полный рабочий день',
-    location: 'Санкт-Петербург',
-    salary: '35 000 - 40 000',
-    daysLeft: 'Осталось 4 дня',
-  },
-  {
-    id: 5,
     companyLogo: facebookLogo,
-    title: 'Маркетинговый специалист',
-    type: 'Стажировка',
-    location: 'Казань',
-    salary: '50 000 - 90 000',
-    daysLeft: 'Осталось 4 дня',
+    title: 'Фронтенд-разработчик',
+    type: 'Полный рабочий день',
+    location: 'Чикаго',
+    salary: '$7500',
+    daysLeft: 'Осталось 3 дня',
   },
   {
     id: 6,
-    companyLogo: googleLogo,
-    title: 'Дизайнер взаимодействия',
+    companyLogo: yandexImg,
+    title: 'Маркетолог',
     type: 'Полный рабочий день',
     location: 'Москва',
-    salary: '55 000 - 100 000',
+    salary: '$1500',
     daysLeft: 'Осталось 4 дня',
+  },
+  {
+    id: 0,
+    companyLogo: appleLogo,
+    title: 'Старший UX-дизайнер',
+    type: 'Стажировка',
+    location: 'Нью-Йорк',
+    salary: '$11000',
+    daysLeft: 'Осталось 11 дней',
+  },
+  {
+    id: 7,
+    companyLogo: yandexImg,
+    title: 'Таргетолог',
+    type: 'Полный рабочий день',
+    location: 'Санкт-Петербург',
+    salary: '$2000',
+    daysLeft: 'Осталось 5 дней',
   },
 ];
 
 function JobList() {
+  // Подключаем навигацию
+  const navigate = useNavigate();
+
+  // Функция, которая будет вызываться при нажатии на кнопку "Откликнуться"
+  const handleApply = (jobId) => {
+    // Переходим на страницу подробного описания вакансии
+    navigate(`/vacancy/${jobId}`);
+  };
+
   return (
     <section className="container jobList">
       {jobsData.map((job) => (
@@ -94,7 +104,10 @@ function JobList() {
 
           {/* Правая часть: Кнопка отклика, иконка сохранения, etc. */}
           <div className="jobList__cardright">
-            <button className="jobList__applybtn">
+            <button 
+              className="jobList__applybtn"
+              onClick={() => handleApply(job.id)}
+            >
               Откликнуться <span style={{ marginLeft: '8px' }}>→</span>
             </button>
             {/* Иконка закладки можно добавить <i className="jobList__bookmarkIcon" /> */}
