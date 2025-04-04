@@ -1,11 +1,10 @@
 {
   "files": {
-    "main.css": "/jobpilot/static/css/main.cbb0bff2.css",
-    "main.js": "/jobpilot/static/js/main.d46414d7.js",
+    "main.css": "/jobpilot/static/css/main.67953617.css",
+    "main.js": "/jobpilot/static/js/main.c3f65566.js",
     "static/media/Illustration.svg": "/jobpilot/static/media/Illustration.8495ba62d829807238187ca0afe41dd3.svg",
     "static/media/aeroflot.svg": "/jobpilot/static/media/aeroflot.f0a08f4d0f165a92e1fdee4ae307e6f4.svg",
     "static/media/yandexicon.svg": "/jobpilot/static/media/yandexicon.162a1c011ec5a46e1176f368ae2984fd.svg",
-    "static/media/gazprom.svg": "/jobpilot/static/media/gazprom.e793c9d6e4fba26728bf1d6f823044cb.svg",
     "static/media/company.svg": "/jobpilot/static/media/company.e7ff372b67ed5ebe990168778e634856.svg",
     "static/media/job.svg": "/jobpilot/static/media/job.eb4e3c0b2ca70d0725c99564063c8f93.svg",
     "static/media/candidates.svg": "/jobpilot/static/media/candidates.daa531f95ae4914e40205d838ad2e6d2.svg",
@@ -16,16 +15,15 @@
     "static/media/logo.svg": "/jobpilot/static/media/logo.531605ddf697b13d1078939a056c9dac.svg",
     "static/media/figma.svg": "/jobpilot/static/media/figma.8b9df84436a56d15909f3302fe621141.svg",
     "static/media/nayka.svg": "/jobpilot/static/media/nayka.a61e7eadf2226f4f1426b072622f9b3c.svg",
-    "static/media/up.svg": "/jobpilot/static/media/up.aa3e22f68918e1390bf32fad9775056d.svg",
     "static/media/apple.svg": "/jobpilot/static/media/apple.7ba893517cff25eb18a3bd03c0eff6c8.svg",
     "index.html": "/jobpilot/index.html",
     "static/media/kod.svg": "/jobpilot/static/media/kod.70b0a6594c7940c548698e996f37746c.svg",
     "static/media/facebook.svg": "/jobpilot/static/media/facebook.22b93bc5bdf46d8dff7ff0f3e9679694.svg",
-    "main.cbb0bff2.css.map": "/jobpilot/static/css/main.cbb0bff2.css.map",
-    "main.d46414d7.js.map": "/jobpilot/static/js/main.d46414d7.js.map"
+    "main.67953617.css.map": "/jobpilot/static/css/main.67953617.css.map",
+    "main.c3f65566.js.map": "/jobpilot/static/js/main.c3f65566.js.map"
   },
   "entrypoints": [
-    "static/css/main.cbb0bff2.css",
-    "static/js/main.d46414d7.js"
+    "static/css/main.67953617.css",
+    "static/js/main.c3f65566.js"
   ]
 }
