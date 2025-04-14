@@ -15,7 +15,6 @@ function CompanyDetail() {
   const navigate = useNavigate();
 
   // Пример статических данных компаний.
-  // В реальном проекте можно получать данные через API.
   const companies = {
     apple: {
       id: 'apple',

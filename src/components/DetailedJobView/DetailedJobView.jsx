@@ -5,7 +5,6 @@ import './DetailedJobView.scss';
 
 function DetailedJobView({ jobData }) {
   const navigate = useNavigate();
-
   if (!jobData) return null;
 
   const {
@@ -22,7 +21,6 @@ function DetailedJobView({ jobData }) {
     city,
   } = jobData;
 
-  // Обработчик возврата назад
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -31,7 +29,20 @@ function DetailedJobView({ jobData }) {
   const handleApply = () => {
     // Читаем текущие отклики или создаём пустой массив, если их ещё нет
     const existingApplications = JSON.parse(localStorage.getItem('jobApplications')) || [];
-    // Добавляем новую заявку; можно добавить проверку на уникальность, если нужно
+
+    // Проверяем, не подавали ли уже заявку. 
+    // Лучший способ — сверять по ID, если у вакансии есть уникальное поле (например, jobId).
+    // Если у вас нет явного jobId, то можно сверять название + компания, но это менее надёжно.
+    const hasApplied = existingApplications.some(
+      (app) => app.title === jobData.title && app.company === jobData.company
+    );
+
+    if (hasApplied) {
+      alert('Вы уже подали заявку на эту вакансию!');
+      return;
+    }
+
+    // Если заявки ещё нет, добавляем новую:
     existingApplications.push(jobData);
     localStorage.setItem('jobApplications', JSON.stringify(existingApplications));
     alert('Ваша заявка успешно подана!');
@@ -123,7 +134,6 @@ function DetailedJobView({ jobData }) {
               )}
             </ul>
           </div>
-          {/* Если снизу кнопка "Подать заявку" была убрана, не добавляем её */}
         </div>
       </div>
     </div>

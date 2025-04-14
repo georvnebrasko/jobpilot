@@ -8,6 +8,7 @@ import DetailedJobPage from './pages/DetailedJobPage';
 import PersonalProfile from './pages/PersonalProfile';
 import CompanyDetail from './components/CompanyDetail/CompanyDetail';
 import AuthModal from './components/AuthModal/AuthModal';
+import SupportClients from './pages/SupportClients';
 import Header from './components/Header/Header'; // Добавляем Header
 import Footer from './components/Footer/Footer';
 
@@ -78,6 +79,7 @@ function App() {
         <Route path="/find-jobs" element={<FindJobs />} />
         <Route path="/vacancy/:jobId" element={<DetailedJobPage />} />
         <Route path="/company/:companyId" element={<CompanyDetail />} />
+        <Route path="/support" element={<SupportClients />} /> 
       </Routes>
 
       <Footer />

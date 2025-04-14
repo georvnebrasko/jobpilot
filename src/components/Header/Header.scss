@@ -2,9 +2,12 @@
 .header {
   position: sticky;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 999;
+
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 25px 0;
 
   .header__top {
@@ -48,7 +51,6 @@
       height: auto;
     }
 
-    /* Блок для "Моя работа" и поисковой строки */
     .header__searchWrapper {
       display: flex;
       align-items: center;
@@ -73,7 +75,6 @@
       font-size: 14px;
     }
 
-    /* Блок для кнопок */
     .header__buttons {
       display: flex;
       align-items: center;
@@ -87,9 +88,9 @@
         .header__usernickname {
           font-weight: bold;
           cursor: pointer;
-          text-decoration: none;  /* убираем подчеркивание */
+          text-decoration: none;
           color: #333;
-          
+
           &:hover,
           &:focus,
           &:active,
