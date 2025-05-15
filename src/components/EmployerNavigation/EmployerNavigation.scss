@@ -1,0 +1,27 @@
+.employerNavigation {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+  
+    .employerNavigation__tab {
+      background: none;
+      border: none;
+      padding: 8px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #555;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+  
+      &:hover {
+        color: #2979ff;
+      }
+    }
+  
+    .employerNavigation__tab--active {
+      color: #2979ff;
+      border-color: #2979ff;
+      font-weight: 600;
+    }
+  }

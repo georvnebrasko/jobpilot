@@ -1,28 +1,32 @@
 /* src/components/AuthModal/AuthModal.scss */
 
+/* ====== Overlay ====== */
 .authModal__overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
   z-index: 1000;
 }
 
+/* ====== Modal ====== */
 .authModal {
-  background-color: #fff;
-  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   width: 400px;
   max-width: 90%;
+  max-height: 80vh;
   padding: 20px;
-  position: relative;
+  border-radius: 8px;
+  background: #fff;
 }
 
-/* Кнопка закрытия */
+/* --- close btn --- */
 .authModal__close {
   position: absolute;
   top: 10px;
@@ -33,108 +37,104 @@
   cursor: pointer;
 }
 
-/* Вкладки */
+/* ====== Tabs ====== */
 .authModal__tabs {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 
-  .authModal__tabs-button {
+  .authModal__tabsButton {
     background: none;
     border: none;
-    font-size: 1.1rem;
     padding: 10px 20px;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: border-bottom 0.2s;
     border-bottom: 2px solid transparent;
+    transition: border-bottom .2s;
 
-    &.authModal__tabs-button--active {
+    &--active {
       border-bottom-color: #2979ff;
       color: #2979ff;
     }
   }
 }
 
-/* Контейнер для форм */
+/* ====== Content (scrollable) ====== */
 .authModal__content {
-  /* Вложенные стили для форм */
+  flex: 1 1 auto;
+  overflow-y: auto;
+
+  /* ====== Form (login / register) ====== */
   .authModal__form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 
-    /* Поля ввода */
+    /* inputs */
+    input[type="text"],
     input[type="email"],
     input[type="password"],
-    input[type="text"] {
+    input[type="tel"] {
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 1rem;
     }
 
-    /* Действия формы (чекбокс + ссылка) */
-    .authModal__form-actions {
+    /* actions (remember + link) */
+    .authModal__formActions {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.9rem;
+      font-size: .9rem;
 
-      .authModal__form-forgotPassword {
+      .authModal__formForgot {
         color: #2979ff;
         text-decoration: none;
       }
     }
 
-    /* Кнопка "Войти" / "Создать аккаунт" */
+    /* submit button */
     button[type="submit"] {
       padding: 10px;
-      background-color: #2979ff;
+      font-size: 1rem;
       color: #fff;
+      background: #2979ff;
       border: none;
       border-radius: 4px;
-      font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: background .2s;
 
-      &:hover {
-        background-color: #185dc7;
-      }
+      &:hover { background: #185dc7; }
     }
 
-    /* Чекбокс условий */
-    .authModal__form-terms {
-      font-size: 0.8rem;
-      color: #666;
+    /* agree terms */
+    .authModal__formTerms {
       display: flex;
       align-items: center;
+      font-size: .8rem;
+      color: #666;
 
-      input {
-        margin-right: 8px;
-      }
+      input { margin-right: 8px; }
     }
 
-    /* Новый блок для выбора типа регистрации */
-    .authModal__form-userType {
+    /* choose user‑type */
+    .authModal__formUsertype {
       display: flex;
       align-items: center;
       gap: 15px;
-      font-size: 0.9rem;
-      color: #333;
       margin: 10px 0;
+      font-size: .9rem;
+      color: #333;
 
-      span {
-        font-weight: bold;
-      }
+      span { font-weight: 600; }
 
       label {
         display: flex;
         align-items: center;
         cursor: pointer;
-        
-        input[type="radio"] {
-          margin-right: 5px;
-        }
+
+        input[type="radio"] { margin-right: 5px; }
       }
     }
   }

@@ -1,0 +1,48 @@
+.employer-info {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 16px;
+    background: #fff;
+  
+    .employer-info__title {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+  
+    .employer-info__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .employer-info__row {
+      display: flex;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+  
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  
+    .employer-info__label {
+      width: 160px;
+      font-weight: bold;
+      color: #555;
+    }
+  
+    .employer-info__value {
+      flex: 1;
+      color: #333;
+    }
+  
+    .employer-info__row--about {
+      flex-direction: column;
+  
+      .employer-info__value {
+        margin-top: 4px;
+        line-height: 1.5;
+      }
+    }
+  }

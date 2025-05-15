@@ -5,6 +5,25 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+// Обёртка всего приложения
+.appWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  // растягиваем на весь экран
+}
+
+// Контейнер между header и footer
+.appContent {
+  flex: 1 1 auto;     // занимает всё доступное между шапкой и футером
+  overflow-y: auto;   // появляется скролл при переполнении
+  padding: 0;         // при необходимости добавьте отступ
+}
+
 body, button, input {
   font-family: Manrope;
 }
@@ -106,5 +125,41 @@ body, button, input {
     font-size: 1rem;
     color: #333;
     text-align: center;
+  }
+}
+
+.employer-profile {
+  padding-top: 140px; // отступ под фиксированный header
+  padding-bottom: 40px;
+
+  .employer-profile__container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .employer-profile__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .employer-profile__title {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .employer-profile__logout-btn {
+    background: #e53935;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .employer-profile__content {
+    margin-top: 24px;
   }
 }

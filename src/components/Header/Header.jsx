@@ -1,4 +1,4 @@
-// src/components/Header.jsx
+// src/components/Header/Header.jsx
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo.svg';
@@ -6,75 +6,92 @@ import './Header.scss';
 
 function Header({ onOpenAuthModal, user, onLogout }) {
   const location = useLocation();
-  const navigate = useNavigate();
+  const navigate  = useNavigate();
 
-  function handleLogoutClick() {
+  /* куда вести по нику (соискатель / работодатель) */
+  const profilePath =
+    user?.userType === 'employer' ? '/employer-profile' : '/personal-profile';
+
+  /* выход */
+  const handleLogoutClick = () => {
     onLogout();
-    if (location.pathname === '/personal-profile') {
+
+    /* если выходим из профиля — возвращаемся на главную */
+    if (
+      location.pathname === '/personal-profile' ||
+      location.pathname === '/employer-profile'
+    ) {
       navigate('/');
     }
-  }
+  };
 
   return (
     <header className="header">
+      {/* ===== верхняя навигация ===== */}
       <div className="header__top">
         <nav className="header__navbar">
-          <ul>
-            <li>
+          <ul className="header__navbarList">
+            <li className="header__navbarItem">
               <Link to="/">Главная</Link>
             </li>
-            <li>
+            <li className="header__navbarItem">
               <Link to="/find-jobs">Найти работу</Link>
             </li>
-            <li>
-              {/* Переходим по маршруту /support */}
+            <li className="header__navbarItem">
               <Link to="/support">Поддержка клиентов</Link>
             </li>
           </ul>
         </nav>
       </div>
 
+      {/* ===== нижняя зона (логотип, поиск, действия) ===== */}
       <div className="header__bottom">
-        <Link to="/">
-          <img src={logo} alt="JobPilot Logo" className="header__logo" />
+        <Link to="/" className="header__logoLink">
+          <img className="header__logo" src={logo} alt="JobPilot logo" />
         </Link>
 
         <div className="header__searchWrapper">
           <span className="header__myjob">Моя работа</span>
           <input
+            className="header__search"
             type="text"
             placeholder="Название должности, ключевое слово, компания"
-            className="header__search"
           />
         </div>
 
         <div className="header__buttons">
           {user ? (
-            <div className="header__userloggedin">
-              <Link to="/personal-profile" className="header__usernickname">
-                {user.nickname}
-              </Link>
-              <button
-                type="button"
-                className="header__logoutbtn"
-                onClick={handleLogoutClick}
-              >
-                Выйти
-              </button>
-            </div>
+            <>
+              {/* ник + выход */}
+              <div className="header__userloggedin">
+                <Link to={profilePath} className="header__usernickname">
+                  {user.nickname}
+                </Link>
+                <button
+                  className="header__logoutbtn"
+                  type="button"
+                  onClick={handleLogoutClick}
+                >
+                  Выйти
+                </button>
+              </div>
+
+              {/* «опубликовать вакансию» — только для работодателя */}
+              {user.userType === 'employer' && (
+                <button className="header__publishbtn" type="button">
+                  Опубликовать вакансию
+                </button>
+              )}
+            </>
           ) : (
             <button
-              type="button"
               className="header__loginbtn"
+              type="button"
               onClick={onOpenAuthModal}
             >
               Войти
             </button>
           )}
-
-          <button className="header__publishbtn" type="button">
-            Опубликовать вакансию
-          </button>
         </div>
       </div>
     </header>

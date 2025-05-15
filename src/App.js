@@ -1,96 +1,150 @@
 // src/App.js
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ScrollToTop from './components/ScrollToTop';
-import Home from './pages/Home';
-import FindJobs from './pages/FindJobs';
-import DetailedJobPage from './pages/DetailedJobPage';
-import PersonalProfile from './pages/PersonalProfile';
-import CompanyDetail from './components/CompanyDetail/CompanyDetail';
-import AuthModal from './components/AuthModal/AuthModal';
-import SupportClients from './pages/SupportClients';
-import Header from './components/Header/Header'; // Добавляем Header
-import Footer from './components/Footer/Footer';
+import React, { useState, useEffect } from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate
+} from 'react-router-dom';
+
+import ScrollToTop   from './components/ScrollToTop';
+import Header        from './components/Header/Header';
+import Footer        from './components/Footer/Footer';
+import AuthModal     from './components/AuthModal/AuthModal';
+
+import Home              from './pages/Home';
+import FindJobs          from './pages/FindJobs';
+import DetailedJobPage   from './pages/DetailedJobPage';
+import PersonalProfile   from './pages/PersonalProfile';
+import EmployerProfile   from './pages/EmployerProfile';
+import CompanyDetail     from './components/CompanyDetail/CompanyDetail';
+import SupportClients    from './pages/SupportClients';
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser]                   = useState(null);
 
-  const openModal = () => setShowAuthModal(true);
+  // При старте поднимаем текущего пользователя из localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('currentUser');
+    if (saved) {
+      try {
+        setUser(JSON.parse(saved));
+      } catch (e) {
+        console.error('Ошибка чтения currentUser из localStorage', e);
+      }
+    }
+  }, []);
+
+  const openModal  = () => setShowAuthModal(true);
   const closeModal = () => setShowAuthModal(false);
 
-  // Регистрация (пример)
-  const handleRegister = (registerData) => {
+  const handleRegister = (data) => {
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-    if (accounts.find(acc => acc.email === registerData.email)) {
-      alert("Аккаунт с такой почтой уже существует!");
+    if (accounts.find(acc => acc.email === data.email)) {
+      alert('Аккаунт с такой почтой уже существует');
       return;
     }
-    accounts.push({
-      email: registerData.email,
-      password: registerData.password,
-      nickname: registerData.nickname,
-    });
-    localStorage.setItem('accounts', JSON.stringify(accounts));
-    setUser({ nickname: registerData.nickname });
-    setShowAuthModal(false);
+    const newAcc = {
+      email:    data.email,
+      password: data.password,
+      nickname: data.nickname,
+      userType: data.userType    // 'applicant' или 'employer'
+    };
+    localStorage.setItem('accounts', JSON.stringify([...accounts, newAcc]));
+
+    const current = { nickname: newAcc.nickname, userType: newAcc.userType };
+    localStorage.setItem('currentUser', JSON.stringify(current));
+    setUser(current);
+    closeModal();
   };
 
-  // Вход (пример)
-  const handleLogin = (loginData) => {
+  const handleLogin = (data) => {
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
     const found = accounts.find(
-      acc => acc.email === loginData.email && acc.password === loginData.password
+      acc =>
+        acc.email    === data.email &&
+        acc.password === data.password &&
+        acc.userType === data.userType
     );
-    if (found) {
-      setUser({ nickname: found.nickname });
-      setShowAuthModal(false);
-    } else {
-      alert("Неверная почта или пароль");
+    if (!found) {
+      alert('Неверные данные для входа');
+      return;
     }
+    const current = { nickname: found.nickname, userType: found.userType };
+    localStorage.setItem('currentUser', JSON.stringify(current));
+    setUser(current);
+    closeModal();
   };
 
   const handleLogout = () => {
     setUser(null);
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('userProfile');
+    localStorage.removeItem('employerProfile');
   };
 
   return (
     <BrowserRouter basename="/jobpilot">
-            <ScrollToTop />
-      {/* Header теперь отображается на всех страницах */}
-      <Header 
-        onOpenAuthModal={openModal} 
-        user={user} 
-        onLogout={handleLogout} 
-      />
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh'
+        }}
+      >
+        <ScrollToTop />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home 
-              onOpenAuthModal={openModal} 
-              user={user} 
-              onLogout={handleLogout} 
+        <Header
+          onOpenAuthModal={openModal}
+          user={user}
+          onLogout={handleLogout}
+        />
+
+        <main style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+
+            {/* Профиль соискателя — только если userType == 'applicant' */}
+            <Route
+              path="/personal-profile/*"
+              element={
+                user?.userType === 'applicant'
+                  ? <PersonalProfile user={user} onLogout={handleLogout} />
+                  : <Navigate to="/" replace />
+              }
             />
-          }
-        />
-        <Route path="/personal-profile/*" element={<PersonalProfile onLogout={handleLogout} user={user} />} />
-        <Route path="/find-jobs" element={<FindJobs />} />
-        <Route path="/vacancy/:jobId" element={<DetailedJobPage />} />
-        <Route path="/company/:companyId" element={<CompanyDetail />} />
-        <Route path="/support" element={<SupportClients />} /> 
-      </Routes>
 
-      <Footer />
+            {/* Профиль работодателя — только если userType == 'employer' */}
+            <Route
+              path="/employer-profile/*"
+              element={
+                user?.userType === 'employer'
+                  ? <EmployerProfile user={user} onLogout={handleLogout} />
+                  : <Navigate to="/" replace />
+              }
+            />
 
-      {showAuthModal && (
-        <AuthModal 
-          onClose={closeModal} 
-          onRegister={handleRegister} 
-          onLogin={handleLogin} 
-        />
-      )}
+            {/* Поиск и детали вакансий */}
+            <Route path="/find-jobs"          element={<FindJobs />} />
+            <Route path="/vacancy/:jobId"     element={<DetailedJobPage />} />
+            <Route path="/company/:companyId" element={<CompanyDetail />} />
+
+            {/* Поддержка клиентов */}
+            <Route path="/support" element={<SupportClients />} />
+          </Routes>
+        </main>
+
+        <Footer />
+
+        {showAuthModal && (
+          <AuthModal
+            onClose={closeModal}
+            onRegister={handleRegister}
+            onLogin={handleLogin}
+          />
+        )}
+      </div>
     </BrowserRouter>
   );
 }
