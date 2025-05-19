@@ -5,7 +5,6 @@ import './AuthModal.scss';
 function AuthModal({ onClose, onRegister, onLogin }) {
   const [activeTab, setActiveTab] = useState('login');
 
-  /* ---------- local state ---------- */
   const [registerData, setRegisterData] = useState({
     nickname: '',
     email: '',
@@ -23,14 +22,39 @@ function AuthModal({ onClose, onRegister, onLogin }) {
     userType: 'applicant',
   });
 
-  /* ---------- handlers ---------- */
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
     if (registerData.password !== registerData.confirmPassword) {
       alert('Пароли не совпадают!');
       return;
     }
+
+    // 1) Регистрируем аккаунт
     onRegister(registerData);
+
+    // 2) Если работодатель — сразу сохраняем профиль компании
+    if (registerData.userType === 'employer') {
+      const employerProfile = {
+        name: registerData.companyName,
+        city: registerData.companyCity,
+        phone: registerData.companyPhone,
+        website: '',
+        size: '',
+        industry: '',
+        about: '',
+      };
+      localStorage.setItem(
+        'employerProfile',
+        JSON.stringify(employerProfile)
+      );
+    }
+
+    // 3) Удаляем старый общий ключ (если был)
+    localStorage.removeItem('jobApplications');
+
+    // 4) Создаём пустой массив заявок для нового пользователя
+    const userJobKey = `jobApplications_${registerData.nickname}`;
+    localStorage.setItem(userJobKey, JSON.stringify([]));
   };
 
   const handleLoginSubmit = (e) => {
@@ -38,7 +62,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
     onLogin(loginData);
   };
 
-  /* ---------- render ---------- */
   return (
     <div className="authModal__overlay">
       <div className="authModal">
@@ -54,7 +77,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
           >
             Войти
           </button>
-
           <button
             className={`authModal__tabsButton ${
               activeTab === 'register' ? 'authModal__tabsButton--active' : ''
@@ -73,7 +95,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
               onSubmit={handleLoginSubmit}
             >
               <h3>Войти в аккаунт</h3>
-
               <input
                 type="email"
                 placeholder="Электронная почта"
@@ -83,7 +104,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                   setLoginData({ ...loginData, email: e.target.value })
                 }
               />
-
               <input
                 type="password"
                 placeholder="Пароль"
@@ -93,7 +113,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                   setLoginData({ ...loginData, password: e.target.value })
                 }
               />
-
               <div className="authModal__formUsertype">
                 <span>Войти как:</span>
                 <label>
@@ -121,7 +140,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                   Работодатель
                 </label>
               </div>
-
               <button type="submit">Войти</button>
             </form>
           )}
@@ -132,7 +150,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
               onSubmit={handleRegisterSubmit}
             >
               <h3>Создать аккаунт</h3>
-
               <input
                 type="text"
                 placeholder="Логин"
@@ -142,7 +159,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                   setRegisterData({ ...registerData, nickname: e.target.value })
                 }
               />
-
               <input
                 type="email"
                 placeholder="Электронная почта"
@@ -152,7 +168,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                   setRegisterData({ ...registerData, email: e.target.value })
                 }
               />
-
               <input
                 type="password"
                 placeholder="Пароль"
@@ -162,7 +177,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                   setRegisterData({ ...registerData, password: e.target.value })
                 }
               />
-
               <input
                 type="password"
                 placeholder="Подтвердите пароль"
@@ -175,7 +189,6 @@ function AuthModal({ onClose, onRegister, onLogin }) {
                   })
                 }
               />
-
               <div className="authModal__formUsertype">
                 <span>Регистрация как:</span>
                 <label>

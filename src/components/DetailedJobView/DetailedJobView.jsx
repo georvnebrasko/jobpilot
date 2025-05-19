@@ -1,12 +1,40 @@
 // src/components/DetailedJobView/DetailedJobView.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DetailedJobView.scss';
 
 function DetailedJobView({ jobData }) {
+  // 1) Хуки всегда первыми, без условий:
   const navigate = useNavigate();
-  if (!jobData) return null;
+  const [hasApplied, setHasApplied] = useState(false);
 
+  // 2) Собираем переменные, не связанные с ранним return:
+  //    — текущий пользователь
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))?.nickname;
+  //    — ключ для его заявок
+  const storageKey = `jobApplications_${currentUser}`;
+  //    — единый uid вакансии
+  const uid = jobData
+    ? jobData.jobId ?? `${jobData.title}___${jobData.company}`
+    : null;
+
+  // 3) Эффект тоже сразу — чтобы всегда вызывался в одном порядке:
+  useEffect(() => {
+    if (!uid) return; // ждём, пока uid определится
+    const existing = JSON.parse(localStorage.getItem(storageKey)) || [];
+    const found = existing.some(app => {
+      const key = app.jobId ?? `${app.title}___${app.company}`;
+      return key === uid;
+    });
+    setHasApplied(found);
+  }, [storageKey, uid]);
+
+  // 4) Только теперь guard-возврат:
+  if (!jobData) {
+    return null;
+  }
+
+  // 5) Безопасно деструктурируем остальное:
   const {
     title,
     company,
@@ -21,45 +49,26 @@ function DetailedJobView({ jobData }) {
     city,
   } = jobData;
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
+  // 6) Обработчики:
+  const handleGoBack = () => navigate(-1);
 
-  // Обработчик подачи заявки: сохраняем данные вакансии в localStorage
   const handleApply = () => {
-    // Читаем текущие отклики или создаём пустой массив, если их ещё нет
-    const existingApplications = JSON.parse(localStorage.getItem('jobApplications')) || [];
-
-    // Проверяем, не подавали ли уже заявку. 
-    // Лучший способ — сверять по ID, если у вакансии есть уникальное поле (например, jobId).
-    // Если у вас нет явного jobId, то можно сверять название + компания, но это менее надёжно.
-    const hasApplied = existingApplications.some(
-      (app) => app.title === jobData.title && app.company === jobData.company
-    );
-
-    if (hasApplied) {
-      alert('Вы уже подали заявку на эту вакансию!');
-      return;
-    }
-
-    // Если заявки ещё нет, добавляем новую:
-    existingApplications.push(jobData);
-    localStorage.setItem('jobApplications', JSON.stringify(existingApplications));
-    alert('Ваша заявка успешно подана!');
+    if (hasApplied) return;
+    const existing = JSON.parse(localStorage.getItem(storageKey)) || [];
+    existing.push(jobData);
+    localStorage.setItem(storageKey, JSON.stringify(existing));
+    setHasApplied(true);
   };
 
+  // 7) JSX-разметка:
   return (
     <div className="detailedJob">
-      {/* Плашка "Детали вакансии" может быть здесь */}
-
-      {/* Кнопка «Назад» */}
       <div className="detailedJob__backWrapper">
         <button className="detailedJob__backBtn" onClick={handleGoBack}>
           ←
         </button>
       </div>
 
-      {/* Заголовок: логотип + название + кнопка "Подать заявку" */}
       <div className="detailedJob__headerRow">
         <div className="detailedJob__titleWrapper">
           {companyIcon && (
@@ -71,17 +80,18 @@ function DetailedJobView({ jobData }) {
           )}
           <h2 className="detailedJob__title">{title}</h2>
         </div>
-        <button 
-          className="detailedJob__applyTopBtn" 
+        <button
+          className={`detailedJob__applyTopBtn ${
+            hasApplied ? 'detailedJob__applyTopBtn--applied' : ''
+          }`}
           onClick={handleApply}
+          disabled={hasApplied}
         >
-          Подать заявку
+          {hasApplied ? 'Заявка уже подана' : 'Подать заявку'}
         </button>
       </div>
 
-      {/* Основной контент */}
       <div className="detailedJob__content">
-        {/* Левая колонка */}
         <div className="detailedJob__left">
           <div className="detailedJob__section">
             <h3 className="detailedJob__sectionTitle">Описание работы</h3>
@@ -97,7 +107,6 @@ function DetailedJobView({ jobData }) {
           </div>
         </div>
 
-        {/* Правая колонка */}
         <div className="detailedJob__right">
           <div className="detailedJob__overviewBox">
             <h3 className="detailedJob__sectionTitle">Обзор работы</h3>

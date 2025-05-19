@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+// src/components/EmployerSettings/EmployerSettings.jsx
+import React, { useState } from 'react';
 import './EmployerSettings.scss';
 
 function EmployerSettings({ company, onSave }) {
-  const [form, setForm] = useState(company);
-
-  // При смене company подтягиваем в форму
-  useEffect(() => {
-    setForm(company);
-  }, [company]);
+  // инициализируем форму однократно из пропса company
+  const [form, setForm] = useState(() => ({ ...company }));
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e) => {

@@ -150,13 +150,32 @@ body, button, input {
     margin: 0;
   }
 
-  .employer-profile__logout-btn {
+  // Контейнер для действий (удаление аккаунта и др.)
+  .employer-profile__actions {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+  }
+
+  // Стили кнопки «Удалить аккаунт»
+  .employer-profile__deleteBtn {
     background: #e53935;
-    color: #fff;
+    color: #ffffff;
     border: none;
-    padding: 8px 16px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: darken(#e53935, 10%);
+    }
+
+    &:active {
+      background: darken(#e53935, 15%);
+    }
   }
 
   .employer-profile__content {
