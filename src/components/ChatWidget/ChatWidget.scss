@@ -1,0 +1,148 @@
+.chat {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 340px;
+    max-width: 90vw;
+    max-height: 80vh;
+    font-family: system-ui, sans-serif;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    z-index: 1000;
+  
+    /* когда открыт */
+    &--open {
+      transform: scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  
+    /* ───────── header ───────── */
+    .chat__header {
+      background: #2979ff;
+      color: #fff;
+      padding: 12px 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .chat__close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s;
+  
+      &:hover {
+        color: #ffdddd;
+      }
+    }
+  
+    /* ───────── body ───────── */
+    .chat__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #f9f9f9;
+    }
+  
+    /* зона сообщений */
+    .chat__msgs {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+    }
+  
+    .chat__msg {
+      margin-bottom: 10px;
+      padding: 10px 14px;
+      border-radius: 16px;
+      max-width: 80%;
+      word-break: break-word;
+      line-height: 1.4;
+  
+      &--bot {
+        background: #e0e0e0;
+        align-self: flex-start;
+      }
+  
+      &--user {
+        background: #2979ff;
+        color: #fff;
+        align-self: flex-end;
+      }
+    }
+  
+    /* строка ввода */
+    .chat__inputRow {
+      display: flex;
+      border-top: 1px solid #ddd;
+      padding: 8px 0;
+  
+      input {
+        flex: 1;
+        border: none;
+        padding: 10px 12px;
+        font-size: 0.95rem;
+        outline: none;
+        background: #fff;
+        border-radius: 4px;
+        transition: box-shadow 0.2s;
+  
+        &:focus {
+          box-shadow: 0 0 0 2px rgba(41, 121, 255, 0.4);
+        }
+      }
+  
+      button {
+        margin-left: 8px;
+        background: #2979ff;
+        color: #fff;
+        border: none;
+        padding: 0 18px;
+        cursor: pointer;
+        font-size: 1rem;
+        border-radius: 4px;
+        transition: background 0.2s;
+  
+        &:hover {
+          background: #185dc7;
+        }
+      }
+    }
+  }
+  
+  /* ───────── плавающая кнопка ───────── */
+  .chatBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #2979ff;
+    color: #fff;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: background 0.2s, transform 0.2s;
+  
+    &:hover {
+      background: #185dc7;
+      transform: scale(1.05);
+    }
+  }
