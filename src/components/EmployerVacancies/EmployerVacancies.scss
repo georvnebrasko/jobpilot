@@ -1,42 +1,74 @@
-.employer-vacancies {
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 16px;
-    background: #fff;
-  
-    .employer-vacancies__title {
-      text-align: center;
-      margin-bottom: 16px;
-      font-size: 1.4rem;
-    }
-  
-    .employer-vacancies__empty {
-      text-align: center;
-      color: #666;
-    }
-  
-    .employer-vacancies__list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-  
-    .employer-vacancies__item {
-      padding: 12px;
-      border-bottom: 1px solid #eee;
-  
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-  
-    .employer-vacancies__jobTitle {
-      margin: 0 0 4px;
-      font-size: 1.1rem;
-    }
-  
-    .employer-vacancies__info {
-      margin: 0;
-      color: #555;
+.employervacancies {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px;
+  background: #fff;
+
+  .employervacancies__title {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 1.4rem;
+  }
+
+  .employervacancies__empty {
+    text-align: center;
+    color: #666;
+  }
+
+  .employervacancies__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .employervacancies__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
     }
   }
+
+  .employervacancies__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .employervacancies__jobtitle {
+    margin: 0 0 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  .employervacancies__company {
+    margin: 0 0 4px;
+    color: #333;
+    font-size: 0.95rem;
+  }
+
+  .employervacancies__details {
+    margin: 0;
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .employervacancies__deletebtn {
+    height: fit-content;
+    padding: 6px 12px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+}

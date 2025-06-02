@@ -19,12 +19,12 @@ import PersonalProfile   from './pages/PersonalProfile';
 import EmployerProfile   from './pages/EmployerProfile';
 import CompanyDetail     from './components/CompanyDetail/CompanyDetail';
 import SupportClients    from './pages/SupportClients';
+import PublishJob        from './pages/PublishJob';
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser]                   = useState(null);
 
-  // При старте поднимаем текущего пользователя из localStorage
   useEffect(() => {
     const saved = localStorage.getItem('currentUser');
     if (saved) {
@@ -49,7 +49,7 @@ function App() {
       email:    data.email,
       password: data.password,
       nickname: data.nickname,
-      userType: data.userType    // 'applicant' или 'employer'
+      userType: data.userType
     };
     localStorage.setItem('accounts', JSON.stringify([...accounts, newAcc]));
 
@@ -105,7 +105,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
 
-            {/* Профиль соискателя — только если userType == 'applicant' */}
+            {/* Профиль соискателя */}
             <Route
               path="/personal-profile/*"
               element={
@@ -115,12 +115,22 @@ function App() {
               }
             />
 
-            {/* Профиль работодателя — только если userType == 'employer' */}
+            {/* Профиль работодателя */}
             <Route
               path="/employer-profile/*"
               element={
                 user?.userType === 'employer'
                   ? <EmployerProfile user={user} onLogout={handleLogout} />
+                  : <Navigate to="/" replace />
+              }
+            />
+
+            {/* Публикация вакансии — только для работодателей */}
+            <Route
+              path="/publish-job"
+              element={
+                user?.userType === 'employer'
+                  ? <PublishJob />
                   : <Navigate to="/" replace />
               }
             />

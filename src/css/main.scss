@@ -182,3 +182,59 @@ body, button, input {
     margin-top: 24px;
   }
 }
+
+.publishjob {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  .publishjob__title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .publishjob__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .publishjob__label {
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .publishjob__input,
+  .publishjob__textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  .publishjob__textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .publishjob__button {
+    margin-top: 12px;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}

@@ -6,23 +6,24 @@ import './Header.scss';
 
 function Header({ onOpenAuthModal, user, onLogout }) {
   const location = useLocation();
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
 
-  /* куда вести по нику (соискатель / работодатель) */
   const profilePath =
     user?.userType === 'employer' ? '/employer-profile' : '/personal-profile';
 
-  /* выход */
   const handleLogoutClick = () => {
     onLogout();
 
-    /* если выходим из профиля — возвращаемся на главную */
     if (
       location.pathname === '/personal-profile' ||
       location.pathname === '/employer-profile'
     ) {
       navigate('/');
     }
+  };
+
+  const handlePublishClick = () => {
+    navigate('/publish-job');
   };
 
   return (
@@ -76,9 +77,13 @@ function Header({ onOpenAuthModal, user, onLogout }) {
                 </button>
               </div>
 
-              {/* «опубликовать вакансию» — только для работодателя */}
+              {/* «опубликовать вакансию» — только для работодателя */}
               {user.userType === 'employer' && (
-                <button className="header__publishbtn" type="button">
+                <button
+                  className="header__publishbtn"
+                  type="button"
+                  onClick={handlePublishClick}
+                >
                   Опубликовать вакансию
                 </button>
               )}

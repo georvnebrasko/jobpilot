@@ -1,31 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import './EmployerVacancies.scss';
+// src/components/EmployerVacancies.jsx
+import React, { useState, useEffect } from "react";
+import "./EmployerVacancies.scss";
 
 function EmployerVacancies() {
   const [vacancies, setVacancies] = useState([]);
 
-  // Предположим, что вакансии мы тоже храним в localStorage
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('employerVacancies')) || [];
+    const saved = JSON.parse(localStorage.getItem("employerVacancies")) || [];
     setVacancies(saved);
   }, []);
 
+  const handleDelete = (id) => {
+    const updated = vacancies.filter((v) => v.id !== id);
+    setVacancies(updated);
+    localStorage.setItem("employerVacancies", JSON.stringify(updated));
+  };
+
   return (
-    <div className="employer-vacancies">
-      <h2 className="employer-vacancies__title">Мои вакансии</h2>
+    <div className="employervacancies">
+      <h2 className="employervacancies__title">Мои вакансии</h2>
 
       {vacancies.length === 0 ? (
-        <p className="employer-vacancies__empty">
+        <p className="employervacancies__empty">
           У вас ещё нет опубликованных вакансий.
         </p>
       ) : (
-        <ul className="employer-vacancies__list">
-          {vacancies.map((v, i) => (
-            <li key={i} className="employer-vacancies__item">
-              <h3 className="employer-vacancies__jobTitle">{v.title}</h3>
-              <p className="employer-vacancies__info">
-                {v.city} • {v.salary}
-              </p>
+        <ul className="employervacancies__list">
+          {vacancies.map((v) => (
+            <li key={v.id} className="employervacancies__item">
+              <div className="employervacancies__info">
+                <h3 className="employervacancies__jobtitle">{v.title}</h3>
+                <p className="employervacancies__company">{v.company}</p>
+                <p className="employervacancies__details">
+                  {v.location} • {v.salary}
+                </p>
+              </div>
+              <button
+                className="employervacancies__deletebtn"
+                onClick={() => handleDelete(v.id)}
+              >
+                Удалить
+              </button>
             </li>
           ))}
         </ul>
