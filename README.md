@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# jobpilot
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Описание
 
-## Available Scripts
+jobpilot — web application project focused on long-term development of a full-scale platform.
 
-In the project directory, you can run:
+Проект разрабатывается как frontend основа будущего production-ready приложения с дальнейшим расширением backend части, баз данных, API и серверной архитектуры.
 
-### `npm start`
+В рамках проекта изучаются современные подходы frontend development, React architecture, UI/UX, взаимодействие клиента и сервера, а также подготовка приложения к масштабированию и глобальному выходу на рынок.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Состав проекта
 
-### `npm test`
+```text
+jobpilot/
+├── public/                # Статические файлы
+├── src/                   # Исходный код приложения
+├── package.json           # Зависимости проекта
+├── package-lock.json      # Версии зависимостей
+├── node_modules/          # Установленные библиотеки
+└── README.md              # Документация проекта
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+# Как запустить
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 1. Клонировать репозиторий
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/georvnebrasko/jobpilot.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 2. Перейти в папку проекта
 
-### `npm run eject`
+```bash
+cd jobpilot
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 3. Установить зависимости
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 4. Запустить проект
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+После запуска приложение будет доступно по адресу:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```text
+http://localhost:3000
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+# Документация
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Основные части проекта:
 
-### Analyzing the Bundle Size
+- `src/` — компоненты и логика приложения
+- `public/` — статические файлы
+- `package.json` — зависимости и скрипты проекта
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Основные команды:
 
-### Making a Progressive Web App
+```bash
+npm start
+npm test
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+# Текущий статус
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Проект находится в длительной стадии разработки и постепенно расширяется как полноценное web-приложение.
 
-### Deployment
+Сейчас реализовано:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- базовая структура React-приложения
+- frontend архитектура
+- работа с компонентами
+- настройка окружения и сборки проекта
+- базовая UI структура
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Планы
+
+Планируется полноценное развитие проекта до production-ready платформы.
+
+В разработке:
+
+- backend часть приложения
+- REST API
+- система авторизации и аккаунтов
+- базы данных и хранение данных
+- серверная архитектура
+- интеграция frontend и backend
+- адаптивный UI/UX
+- система ролей и пользователей
+- deployment и hosting
+- CI/CD
+- оптимизация производительности
+- масштабирование проекта
+- подготовка к глобальному релизу и выходу на рынок
